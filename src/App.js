@@ -1,17 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/Header/header'
-import HomePage from './components/HomePage/homePage'
-import Footer from './components/Footer/footer'
+import logo from "./logo.svg";
+import "./App.css";
+
+import Admin from "./layouts/Admin";
+
+import Auth from "./layouts/Auth"; 
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
 function App() {
   return (
     <>
-          <Header/>
-          <div className="min-h-screen"></div>
-          <Footer/>
+      <BrowserRouter>
+        <Switch>
+          {/* add routes with layouts */}
+          <Route path="/admin" component={Admin} />
+          <Route path="/auth" component={Auth} />
+          {/* add routes without layouts */}
+          
+          <Route path="/" exact component={Auth} />
+          {/* add redirect for first page */}
+          <Redirect from="*" to="/" />
+        </Switch>
+  </BrowserRouter>,
     </>
-
-   
   );
 }
 
