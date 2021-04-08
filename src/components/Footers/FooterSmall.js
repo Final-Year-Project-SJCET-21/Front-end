@@ -20,7 +20,7 @@ export default function FooterSmall(props) {
                   href="https://www.creative-tim.com?ref=nr-footer-small"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  Learning App
                 </a>
               </div>
             </div>
@@ -31,7 +31,7 @@ export default function FooterSmall(props) {
                     href="https://www.creative-tim.com?ref=nr-footer-small"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
+                    Learning App
                   </a>
                 </li>
                 <li>
@@ -42,22 +42,8 @@ export default function FooterSmall(props) {
                     About Us
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="http://blog.creative-tim.com?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
-                  >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/creativetimofficial/notus-react/blob/main/LICENSE.md?ref=nr-footer-small"
-                    className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
-                  >
-                    MIT License
-                  </a>
-                </li>
+                
+                
               </ul>
             </div>
           </div>
