@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from 'axios';
 import Register from "./Register"
 import {
   BrowserRouter as Router,
@@ -8,6 +9,32 @@ import {
 } from "react-router-dom";
 
 export default function Login() {
+
+  const [username, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSignin = (evt) => {
+    evt.preventDefault();
+    
+    axios
+    .post('http://localhost:1337/auth/local', {
+      
+      email: email,
+      password: password,
+    })
+    .then(response => {
+      // Handle success.
+      console.log('Well done!');
+      console.log('User profile', response.data.user);
+      console.log('User token', response.data.jwt);
+    })
+    .catch(error => {
+      // Handle error.
+      console.log('An error occurred:', error.response);
+    });
+}
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -62,6 +89,7 @@ export default function Login() {
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      onChange={e => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -76,6 +104,7 @@ export default function Login() {
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      onChange={e => setPassword(e.target.value)}
                     />
                   </div>
                   <div>
@@ -96,6 +125,7 @@ export default function Login() {
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="button"
+                        onClick={handleSignin}
                       >
                         Sign In
                       </button>

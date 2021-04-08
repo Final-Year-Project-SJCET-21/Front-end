@@ -1,5 +1,12 @@
 import React, {useState} from "react";
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
 export default function Register() {
 
@@ -9,7 +16,7 @@ export default function Register() {
 
   const handleSignup = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${username} ${email} ${password}`)
+    // alert(`Submitting Name ${username} ${email} ${password}`)
     axios
     .post('http://localhost:1337/auth/local/register', {
       username: username,
@@ -21,6 +28,7 @@ export default function Register() {
       console.log('Well done!');
       console.log('User profile', response.data.user);
       console.log('User token', response.data.jwt);
+      
     })
     .catch(error => {
       // Handle error.
@@ -143,6 +151,7 @@ export default function Register() {
                   </div>
 
                   <div className="text-center mt-6">
+                    <Link to='/admin'>
                     <button
                       className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
@@ -150,6 +159,7 @@ export default function Register() {
                     >
                       Create Account
                     </button>
+                    </Link>
                   </div>
                 </form>
               </div>
