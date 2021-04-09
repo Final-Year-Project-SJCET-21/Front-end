@@ -4,21 +4,38 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@popperjs/core": "2.9.1",
+    "@tailwindcss/forms": "^0.3.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
+    "chart.js": "2.9.4",
+    "font-awesome": "^4.7.0",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-router": "5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm start",
+    "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css"
   },
   "eslintConfig": {
     "extends": [
@@ -39,9 +56,6 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.3",
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "@tailwindcss/postcss7-compat": "^2.0.3"
   }
 }
