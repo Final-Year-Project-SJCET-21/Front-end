@@ -8,7 +8,7 @@ import CardPageVisits from "../../components/Cards/CardPageVisits.js";
 import CardSocialTraffic from "../../components/Cards/CardSocialTraffic.js";
 import Navbar from '../../components/Navbars/AdminNavbar.js'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   return (
     <>
       
@@ -17,7 +17,7 @@ export default function Dashboard() {
           <CardLineChart />
         </div> */}
         <div className="w-full xl:w-4/12 px-4">
-          <CardBarChart />
+          <CardBarChart  />
         </div>
       </div>
       <div className="flex flex-wrap mt-4">

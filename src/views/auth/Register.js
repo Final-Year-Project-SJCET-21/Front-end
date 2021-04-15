@@ -13,6 +13,7 @@ export default function Register() {
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isSucess, setisSucess] = useState(false);
 
   const handleSignup = (evt) => {
     evt.preventDefault();
@@ -26,8 +27,10 @@ export default function Register() {
     .then(response => {
       // Handle success.
       console.log('Well done!');
-      console.log('User profile', response.data.user);
-      console.log('User token', response.data.jwt);
+      // console.log('User profile', response.data.user);
+      // console.log('User token', response.data.jwt);
+      setisSucess(true);
+      
       
     })
     .catch(error => {
@@ -37,7 +40,11 @@ export default function Register() {
 }
 
   
-  
+if(isSucess){
+  return(
+    <Redirect to="/admin"/>
+  )
+}
 
 
 

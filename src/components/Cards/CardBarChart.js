@@ -1,7 +1,7 @@
 import React from "react";
 // import Chart from "chart.js";
 
-export default function CardBarChart() {
+export default function CardBarChart(props) {
   // React.useEffect(() => {
   //   let config = {
   //     type: "bar",
