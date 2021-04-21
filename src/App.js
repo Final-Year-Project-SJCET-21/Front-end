@@ -4,6 +4,7 @@ import "./App.css";
 import Admin from "./layouts/Admin";
 
 import Auth from "./layouts/Auth"; 
+import Header from './components/HomePage/homePage'
 import {
   BrowserRouter,
   Switch,
@@ -21,7 +22,7 @@ function App() {
           <Route path="/auth" component={Auth} />
           {/* add routes without layouts */}
           
-          <Route path="/" exact component={Auth} />
+          <Route path="/" exact component={Header} />
           {/* add redirect for first page */}
           <Redirect from="*" to="/" />
         </Switch>
