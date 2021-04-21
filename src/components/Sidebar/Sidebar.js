@@ -76,7 +76,7 @@ export default function Sidebar() {
             </form>
 
             
-            <h6>namde App</h6>
+            <h6>Learning App</h6>
             
 
             {/* Divider */}
@@ -91,18 +91,18 @@ export default function Sidebar() {
                   className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
                 >
                   <i className="fas fa-paint-brush mr-2 text-blueGray-300 text-base"></i>
-                  Classrooms
+                  My courses
                 </a>
               </li>
 
               <li className="inline-flex">
                 <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/react/alerts/notus"
+                  href=""
                   target="_blank"
                   className="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold"
                 >
                   <i className="fab fa-css3-alt mr-2 text-blueGray-300 text-base"></i>
-                  Enrolled courses
+                  Classrooms
                 </a>
               </li>
 

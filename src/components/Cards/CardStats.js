@@ -13,31 +13,19 @@ export default function CardStats({
 }) {
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
-        <div className="flex-auto p-4">
-          <div className="flex flex-wrap">
-            <div className="relative w-full pr-4 max-w-full flex-grow flex-1">
-              <h5 className="text-blueGray-400 uppercase font-bold text-xs">
-                {statSubtitle}
-              </h5>
-              <span className="font-semibold text-xl text-blueGray-700">
-                {statTitle}
-              </span>
-            </div>
-            <div className="relative w-auto pl-4 flex-initial">
-              {/* <div
-                className={
-                  "text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full " +
-                  statIconColor
-                }
-              >
-                <i className={statIconName}></i>
-              </div> */}
-            </div>
-          </div>
-         
-        </div>
+      <div class="p-7">  
+    
+    <div class="max-w-xs w-60 rounded bg-white shadow-lg">
+      <img class="w-full" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80" alt="Mountain"/>
+      <div class="px-6 py-4">
+        <div class="font-bold text-sm mb-2">{statTitle}</div>
+        <p class="text-gray-700 text-sm">
+          {statSubtitle}
+        </p>
       </div>
+      
+    </div>
+  </div>
     </>
   );
 }
@@ -57,13 +45,5 @@ CardStats.propTypes = {
   statSubtitle: PropTypes.string,
   statTitle: PropTypes.string,
  
-  statPercent: PropTypes.string,
-  // can be any of the text color utilities
-  // from tailwindcss
-
-  statDescripiron: PropTypes.string,
-  statIconName: PropTypes.string,
-  // can be any of the background color utilities
-  // from tailwindcss
-  statIconColor: PropTypes.string,
+ 
 };
