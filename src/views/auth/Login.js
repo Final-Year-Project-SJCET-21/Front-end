@@ -5,14 +5,17 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
-export default function Login() {
+export default function Login(props) {
 
-  const [username, setName] = useState("");
+  
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState("");
+  const [isSucess, setisSucess] = useState(false);
 
   const handleSignin = (evt) => {
     evt.preventDefault();
@@ -20,7 +23,7 @@ export default function Login() {
     axios
     .post('http://127.0.0.1:8000/rest-auth/login/', {
       
-      email: email,
+      identifier: email,
       password: password,
     })
     .then(response => {
@@ -34,6 +37,12 @@ export default function Login() {
       console.log('An error occurred:', error.response);
     });
 }
+
+  if(isSucess){
+    
+    props.history.push('/admin',{jwt:token})
+  }
+
 
   return (
     <>
@@ -121,7 +130,7 @@ export default function Login() {
                   </div>
 
                   <div className="text-center mt-6">
-                    <Link to='/admin'>
+                    
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="button"
@@ -129,7 +138,7 @@ export default function Login() {
                       >
                         Sign In
                       </button>
-                    </Link>
+                    
                   </div>
                 </form>
               </div>

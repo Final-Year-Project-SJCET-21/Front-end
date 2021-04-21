@@ -1,33 +1,51 @@
 import React, { useEffect } from "react";
-
-
+import axios from 'axios';
 // components
 
 import CardStats from "../../components/Cards/CardStats.js";
 
-export default function HeaderStats() {
+export default function HeaderStats(props) {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const token = props.token;
 
- useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/photos?albumId=1")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-      console.log(items);
-  }, [])
+  
+  axios
+  .get('http://localhost:1337/courses', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(response => {
+    // Handle success.
+    setIsLoaded(true);
+    setItems(response.data);
+    console.log('Data: ', response.data);
+  })
+  .catch(error => {
+    // Handle error.
+    console.log('An error occurred:', error.response);
+  });
+
+//  useEffect(() => {
+//     fetch("https://jsonplaceholder.typicode.com/photos?albumId=1")
+//       .then(res => res.json())
+//       .then(
+//         (result) => {
+//           setIsLoaded(true);
+//           setItems(result);
+//         },
+//         // Note: it's important to handle errors here
+//         // instead of a catch() block so that we don't swallow
+//         // exceptions from actual bugs in components.
+//         (error) => {
+//           setIsLoaded(true);
+//           setError(error);
+//         }
+//       )
+//       console.log(items);
+//   }, [])
 
 
   // if (error) {
@@ -62,12 +80,11 @@ export default function HeaderStats() {
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
               
                 <CardStats
-                statSubtitle={item.title} 
+                statSubtitle={item.CourseName} 
                 
-                // statArrow="up"
-                // statPercent="3.48"
-                // statPercentColor="text-emerald-500"
-                // statDescripiron="Since last month"
+                statArrow="up"
+                
+                statDescripiron="Since last month"
                 statIconName="far fa-chart-bar"
                 statIconColor="bg-red-500"
               />
