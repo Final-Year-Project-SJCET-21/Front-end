@@ -18,7 +18,7 @@ export default function Login() {
     evt.preventDefault();
     
     axios
-    .post('http://localhost:1337/auth/local', {
+    .post('http://127.0.0.1:8000/rest-auth/login/', {
       
       email: email,
       password: password,
@@ -27,7 +27,7 @@ export default function Login() {
       // Handle success.
       console.log('Well done!');
       console.log('User profile', response.data.user);
-      console.log('User token', response.data.jwt);
+      console.log('User token', response.data.key);
     })
     .catch(error => {
       // Handle error.
