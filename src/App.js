@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           {/* add routes with layouts */}
-          <Route path="/admin" component={Profile} />
+          <Route path="/admin" component={Admin} />
           <Route path="/auth" component={Auth} />
           {/* add routes without layouts */}
           
