@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import Admin from "./layouts/Admin";
-import Face from "./components/Face/Face"
+// import Face from "./components/Face/Face"
 import Auth from "./layouts/Auth"; 
 import Header from './components/HomePage/homePage'
 import Profile from './views/Profile'
