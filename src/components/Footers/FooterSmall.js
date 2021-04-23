@@ -6,7 +6,7 @@ export default function FooterSmall(props) {
       <footer
         className={
           (props.absolute
-            ? "absolute w-full bottom-0 bg-indigo-500"
+            ? "absolute w-full bottom-0 "
             : "relative") + " pb-6"
         }
       >

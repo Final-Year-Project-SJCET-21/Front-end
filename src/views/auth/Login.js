@@ -21,16 +21,19 @@ export default function Login(props) {
     evt.preventDefault();
     
     axios
-    .post('http://127.0.0.1:8000/rest-auth/login/', {
+    .post('http://project-api.fenstrok.com/rest-auth/login/', {
       
-      identifier: email,
+      email: email,
       password: password,
     })
     .then(response => {
       // Handle success.
       console.log('Well done!');
-      console.log('User profile', response.data.user);
+      
       console.log('User token', response.data.key);
+      setToken(response.data.key);
+      setisSucess(true);
+      
     })
     .catch(error => {
       // Handle error.

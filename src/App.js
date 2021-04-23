@@ -4,7 +4,8 @@ import "./App.css";
 import Admin from "./layouts/Admin";
 
 import Auth from "./layouts/Auth"; 
-import Header from './components/HomePage/homePage'
+import Header from './components/HomePage/homePage';
+import CourseDetails from "./views/admin/CourseDetails";
 import {
   BrowserRouter,
   Switch,
@@ -20,6 +21,8 @@ function App() {
           {/* add routes with layouts */}
           <Route path="/admin" component={Admin} />
           <Route path="/auth" component={Auth} />
+          <Route path="/coursedetails" component={CourseDetails } />
+          
           {/* add routes without layouts */}
           
           <Route path="/" exact component={Header} />

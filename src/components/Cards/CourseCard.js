@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function CardStats({
+export default function CourseCard({
   statSubtitle,
   statTitle,
   statArrow,
@@ -13,10 +13,10 @@ export default function CardStats({
 }) {
   return (
     <>
-      <div class="p-7">  
+      <div class="">  
     
     <div class="max-w-xs w-60 rounded bg-white shadow-lg">
-      <img class="w-full" src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80" alt="Mountain"/>
+      <img class="w-full" src="https://image.freepik.com/free-vector/cute-penguin-sleeping-hug-pillow-cartoon-illustration_138676-3013.jpg" alt="Mountain"/>
       <div class="px-6 py-4">
         <div class="font-bold text-sm mb-2">{statTitle}</div>
         <p class="text-gray-700 text-sm">
@@ -30,7 +30,7 @@ export default function CardStats({
   );
 }
 
-CardStats.defaultProps = {
+CourseCard.defaultProps = {
   // statSubtitle: "Traffic",
   // statTitle: "350,897",
   // statArrow: "up",
@@ -41,7 +41,7 @@ CardStats.defaultProps = {
   // statIconColor: "bg-red-500",
 };
 
-CardStats.propTypes = {
+CourseCard.propTypes = {
   statSubtitle: PropTypes.string,
   statTitle: PropTypes.string,
  
