@@ -6,6 +6,7 @@ import Admin from "./layouts/Admin";
 import Auth from "./layouts/Auth"; 
 import Header from './components/HomePage/homePage'
 import Profile from './views/Profile'
+import CourseDetails from './views/admin/CourseDetails'
 import {
   BrowserRouter,
   Switch,
