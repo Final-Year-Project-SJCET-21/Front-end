@@ -16,7 +16,7 @@ export default function HeaderStats(props) {
     return (
       <>
       {/* Header */}
-      <div className="relative  bg-gradient-to-r from-indigo-500 to-blue-500 md:pt-32 pb-32 pt-12">
+      <div className="relative  bg-deep-purple-accent-400 md:pt-32 pb-32 pt-12">
         <div className="px-4 md:px-10 mx-auto w-full">
           
           <div >

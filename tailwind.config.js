@@ -432,7 +432,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        sans: ['Helvetica Neue', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         red: {

@@ -18,7 +18,7 @@ export default function Auth() {
       <main>
         <section className="relative w-full h-full py-20 pb-40 min-h-screen">
           <div
-            className="absolute top-0 w-full h-full bg-gradient-to-r from-indigo-500 to-blue-500  bg-no-repeat bg-full"
+            className="absolute top-0 w-full h-full bg-deep-purple-accent-400  bg-no-repeat bg-full"
             
           ></div>
           <Switch>

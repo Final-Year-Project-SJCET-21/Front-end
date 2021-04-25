@@ -32,7 +32,7 @@ function App() {
           {/* add redirect for first page */}
           <Redirect from="*" to="/" />
         </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
     </>
   );
 }
