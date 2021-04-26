@@ -8,12 +8,13 @@ import {
   Redirect
 } from "react-router-dom";
 
-export default function Register() {
+export default function Register(props) {
 
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isSucess, setisSucess] = useState(false);
+  const [token, setToken] = useState("");
 
   const handleSignup = (evt) => {
     evt.preventDefault();
@@ -23,12 +24,14 @@ export default function Register() {
       username: username,
       email: email,
       password: password,
+      
     })
     .then(response => {
       // Handle success.
       console.log('Well done!');
       // console.log('User profile', response.data.user);
       // console.log('User token', response.data.jwt);
+      setToken(response.data.key);
       setisSucess(true);
       
       
@@ -41,9 +44,7 @@ export default function Register() {
 
   
 if(isSucess){
-  return(
-    <Redirect to="/admin"/>
-  )
+  props.history.push('/admin',{jwt:token})
 }
 
 

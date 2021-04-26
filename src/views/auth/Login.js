@@ -32,6 +32,8 @@ export default function Login(props) {
       
       console.log('User token', response.data.key);
       localStorage.setItem("key", response.data.key);
+      setToken(response.data.key);
+      setisSucess(true);
     })
     .catch(error => {
       // Handle error.
@@ -102,7 +104,7 @@ export default function Login(props) {
                   <div className="text-center mt-6">
                     
                       <button
-                        className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                        className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="button"
                         onClick={handleSignin}
                       >
@@ -118,14 +120,14 @@ export default function Login(props) {
                 <a
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
-                  className="text-blueGray-200"
+                  className="text-white"
                 >
                   <small>Forgot password?</small>
                 </a>
               </div>
               <div className="w-1/2 text-right">
                 
-                  <Link to="/auth/register" className="text-blueGray-200">
+                  <Link to="/auth/register" className="text-white">
                     <small>Create new account</small>
                   </Link>
                   

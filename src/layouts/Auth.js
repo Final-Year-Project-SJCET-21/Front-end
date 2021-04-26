@@ -18,9 +18,9 @@ export default function Auth() {
       <main>
         <section className="relative w-full h-full py-20 pb-40 min-h-screen">
           {/* <div
-            className="absolute top-0 w-full h-full bg-indigo-500  bg-no-repeat bg-full"
+            className="absolute top-0 w-full h-full bg-deep-purple-accent-400  bg-no-repeat bg-full"
             
-          ></div> */}
+          ></div>  */}
           <Switch>
             <Route path="/auth/login" exact component={Login} />
             <Route path="/auth/register" exact component={withRouter(Register)} />
@@ -28,7 +28,7 @@ export default function Auth() {
           </Switch>
          
           {/* <FooterSmall absolute /> */}
-        </section>
+        {/* </section> */}
       </main>
     </>
   );
