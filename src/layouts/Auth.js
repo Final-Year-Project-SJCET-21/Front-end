@@ -8,7 +8,7 @@ import FooterSmall from "../components/Footers/FooterSmall.js";
 
 // views
 
-import Login from "../views/auth/NewLogin.js";
+import Login from "../views/auth/Login.js";
 import Register from "../views/auth/Register.js";
 
 export default function Auth() {
@@ -16,7 +16,7 @@ export default function Auth() {
     <>
       {/* <Navbar transparent /> */}
       <main>
-        <section className="relative w-full h-full py-20 pb-40 min-h-screen">
+        <section className="relative w-full h-full min-h-screen">
           {/* <div
             className="absolute top-0 w-full h-full bg-deep-purple-accent-400  bg-no-repeat bg-full"
             
@@ -28,7 +28,7 @@ export default function Auth() {
           </Switch>
          
           {/* <FooterSmall absolute /> */}
-        {/* </section> */}
+        </section>
       </main>
     </>
   );

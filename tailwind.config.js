@@ -431,9 +431,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: theme => ({
+        'hero-pattern': "url('./assets/img/hero.jpg')",
+        
+       }),
       fontFamily: {
         sans: ['Helvetica Neue', ...defaultTheme.fontFamily.sans],
       },
+      
       colors: {
         red: {
           '50': '#ffebee',

@@ -35,7 +35,7 @@ export default function CardProfile(props) {
       
               <div className="flex flex-wrap">
                 {items.map((item) => (
-                  <button className="focus:outline-none m-7 hover:shadow-lg"
+                  <button className="focus:outline-none m-7 hover:shadow-md"
                   onClick={()=>{props.history.push('/coursedetails')}}>
                     <div className="bg-white">
                     
