@@ -16,7 +16,7 @@ export default function Auth() {
     <>
       {/* <Navbar transparent /> */}
       <main>
-        <section className="relative w-full h-full min-h-screen">
+        <section className="">
           {/* <div
             className="absolute top-0 w-full h-full bg-deep-purple-accent-400  bg-no-repeat bg-full"
             

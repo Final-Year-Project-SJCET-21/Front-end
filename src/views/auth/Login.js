@@ -47,18 +47,18 @@ export default function Login(props) {
   return (
     <>
 
-<div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div className=" bg-hero-pattern bg-cover  sm:max-w-xl md:max-w-full  md:px-24 lg:px-8 lg:py-20">
       <div className="grid gap-5 row-gap-8 lg:grid-cols-2">
         <div className="flex flex-col justify-center ">
         {/* <img src={Image} className="max-h-96 object-contain" alt="Logo" /> */}
           <div className=" mb-6">
           
           <br/>
-              <h2 className="text-center text-primarycolor-50 text-xl font-bold md:text-lg">
+              <h2 className="text-center text-white  text-xl font-bold md:text-lg">
                 Welcome to Learning App 
               
             </h2>
-            <p className="text-base text-center text-gray-700 md:text-lg">
+            <p className="text-base text-center text-white md:text-lg">
               A Digital School To make Learning Digital
             </p>
           </div>
