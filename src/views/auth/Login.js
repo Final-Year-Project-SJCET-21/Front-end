@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Register from "./Register";
-import Image from '../../assets/img/Saly-10.png'
+import Logo from '../../assets/img/logo.png'
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,15 +47,15 @@ export default function Login(props) {
   return (
     <>
 
-<div className=" bg-hero-pattern bg-cover  sm:max-w-xl md:max-w-full  md:px-24 lg:px-8 lg:py-20">
+<div className=" bg-hero-pattern bg-cover  sm:max-w-xl sm:p-32 md:max-w-full  md:px-24 lg:px-8 lg:py-20">
       <div className="grid gap-5 row-gap-8 lg:grid-cols-2">
-        <div className="flex flex-col justify-center ">
+        <div className="flex flex-col justify-center mx-auto">
         {/* <img src={Image} className="max-h-96 object-contain" alt="Logo" /> */}
-          <div className=" mb-6">
-          
+          <div className=" mx-auto mb-6 "> 
+          <img class="w-2/3 mx-auto content-center" src={Logo} alt="Logo"/>
           <br/>
               <h2 className="text-center text-white  text-xl font-bold md:text-lg">
-                Welcome to Learning App 
+                Welcome to WebSkool
               
             </h2>
             <p className="text-base text-center text-white md:text-lg">

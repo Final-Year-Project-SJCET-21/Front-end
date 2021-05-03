@@ -21,10 +21,8 @@ export default function CardProfile(props) {
 
   var coursecover = [
     coursecover8,
-    
     coursecover2,
     coursecover3,
-    
     coursecover5,
     coursecover6,
     coursecover7,

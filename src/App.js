@@ -5,6 +5,7 @@ import Admin from "./layouts/Admin";
 // import Face from "./components/Face/Face"
 import Auth from "./layouts/Auth"; 
 import Header from './components/HomePage/homePage'
+import FaceApi from './components/Face/Face'
 import AddCourse from './views/admin/AddCourse'
 import Profile from './views/Profile'
 import CourseDetails from './views/admin/CourseDetails'
@@ -26,11 +27,12 @@ function App() {
           <Route path="/auth" component={Auth} />
           <Route path="/coursedetails" component={CourseDetails } />
           <Route path="/addcourse" component={AddCourse} />
+          {/* s */}
           
           {/* add routes without layouts */}
           
           <Route path="/" exact component={Header} />
-          <Route path="/face" exact component={Header} />
+          <Route path="/face" exact component={FaceApi} />
           {/* add redirect for first page */}
           <Redirect from="*" to="/" />
         </Switch>

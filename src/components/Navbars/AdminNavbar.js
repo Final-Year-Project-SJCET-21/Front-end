@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from '../../assets/img/logo.png'
 
 import UserDropdown from "../Dropdowns/UserDropdown.js";
 
@@ -10,7 +11,7 @@ export default function Navbar() {
         
         <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
           {/* Brand */}
-          
+          {/* <img class=" w-44" src={Logo} alt="Logo"/> */}
           <a
             className="text-white text-sm uppercase  lg:inline-block font-semibold"
             href="#pablo"
