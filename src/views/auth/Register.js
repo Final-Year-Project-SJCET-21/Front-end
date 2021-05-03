@@ -20,7 +20,7 @@ export default function Register(props) {
     evt.preventDefault();
     // alert(`Submitting Name ${username} ${email} ${password}`)
     axios
-    .post('http://localhost:1337/auth/local/register', {
+    .post('https://localhost:1337/auth/local/register', {
       username: username,
       email: email,
       password: password,

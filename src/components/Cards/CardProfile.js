@@ -33,7 +33,7 @@ export default function CardProfile(props) {
   var i=0;
 
   axios
-    .get("http://project-api.fenstrok.com/api/clasroom/", {
+    .get("https://project-api.fenstrok.com/api/clasroom/", {
       headers: {
         // Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',

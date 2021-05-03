@@ -21,7 +21,7 @@ export default function Login(props) {
     evt.preventDefault();
     
     axios
-      .post("http://project-api.fenstrok.com/rest-auth/login/", {
+      .post("https://project-api.fenstrok.com/rest-auth/login/", {
         email: email,
         password: password,
       })
