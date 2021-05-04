@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Register from "./Register";
 import Logo from '../../assets/img/logo.png'
+import AuthBase from "./Base";
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,39 +46,8 @@ export default function Login(props) {
   }
 
   return (
-    <>
-
-<div className=" bg-hero-pattern bg-cover  sm:max-w-xl sm:p-32 md:max-w-full  md:px-24 lg:px-8 lg:py-20">
-      <div className="grid gap-5 row-gap-8 lg:grid-cols-2">
-        <div className="flex flex-col justify-center mx-auto">
-        {/* <img src={Image} className="max-h-96 object-contain" alt="Logo" /> */}
-          <div className=" mx-auto mb-6 "> 
-          <img class="w-2/3 mx-auto content-center" src={Logo} alt="Logo"/>
-          <br/>
-              <h2 className="text-center text-white  text-xl font-bold md:text-lg">
-                Welcome to WebSkool
-              
-            </h2>
-            <p className="text-base text-center text-white md:text-lg">
-              A Digital School To make Learning Digital
-            </p>
-          </div>
-          
-          {/* <a
-            href="/auth/login"
-            aria-label=""
-          >
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                SignIn
-            </button>
-          </a> */}
-        </div>
-        <div className="relative">
-        <div className="flex-auto px-4 lg:px-10  pt-0">
-                
-        <div className="container mx-auto px-4 h-full">
-        <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full  px-4">
+    <AuthBase>
+<div className="w-full  px-4">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 border border-gray-200 rounded-lg bg-white border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
@@ -187,13 +157,7 @@ export default function Login(props) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-              </div>
-        </div>
-      </div>
-    </div>
-      
-    </>
+
+    </AuthBase>
   );
 }
