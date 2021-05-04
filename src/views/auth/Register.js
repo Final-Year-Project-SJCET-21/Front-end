@@ -20,10 +20,11 @@ export default function Register(props) {
     evt.preventDefault();
     // alert(`Submitting Name ${username} ${email} ${password}`)
     axios
-    .post('https://localhost:1337/auth/local/register', {
-      username: username,
+    .post('https://project-api.fenstrok.com/rest-auth/registration/', {
+      name: username,
       email: email,
-      password: password,
+      password1: password,
+      password2: password,
       
     })
     .then(response => {

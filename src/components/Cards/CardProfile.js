@@ -32,7 +32,8 @@ export default function CardProfile(props) {
   ];
   var i=0;
 
-  axios
+  if(isLoaded==false){
+    axios
     .get("https://project-api.fenstrok.com/api/clasroom/", {
       headers: {
         // Authorization: `Bearer ${token}`,
@@ -50,10 +51,11 @@ export default function CardProfile(props) {
       // Handle error.
       console.log("An error occurred:", error.response);
     });
+  }
 
   return (
     <>
-      <div class="p-5">
+      <div class="px-8 pb-5">
       
               <div className="flex flex-wrap mx-auto">
                 {items.map((item) => (
