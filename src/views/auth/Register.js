@@ -34,6 +34,7 @@ export default function Register(props) {
       // console.log('User token', response.data.jwt);
       setToken(response.data.key);
       setisSucess(true);
+      localStorage.setItem("key", response.data.key);
       
       
     })

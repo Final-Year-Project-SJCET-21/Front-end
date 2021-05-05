@@ -52,10 +52,11 @@ export default function AddCourseForm(props) {
 
         
         setisSucess(true);
+        alert("success");
       })
       .catch((error) => {
         // Handle error.
-        console.log("An error occurred:", error.response);
+        console.log("An error occurred:", error);
       });
   };
 
