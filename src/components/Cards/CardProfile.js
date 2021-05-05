@@ -27,6 +27,7 @@ export default function CardProfile(props) {
     coursecover6,
     coursecover7,
     coursecover1,
+
     
     
   ];
@@ -67,7 +68,7 @@ export default function CardProfile(props) {
                     <CourseCard
                       statTitle={item.room_name}
                       statSubtitle={item.created_by}
-                      coursecover={coursecover[(i>7)?0:i++]}
+                      coursecover={coursecover[(i>6)?i=0:i++]}
                     />
                   </div>
                   </button>
