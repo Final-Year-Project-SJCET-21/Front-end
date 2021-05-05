@@ -41,8 +41,8 @@ export default function AddCourseForm(props) {
         
       },{
         headers: {
-            'key': 'Authorization',
-            'value': `Token ${token}` 
+            'Authorization': `Token ${token}`,
+            
           }
       }
       )
