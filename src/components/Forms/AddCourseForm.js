@@ -36,7 +36,7 @@ export default function AddCourseForm(props) {
     evt.preventDefault();
     
     axios
-      .post("http://project-api.fenstrok.com/api/clasroom/", {
+      .post("https://project-api.fenstrok.com/api/clasroom/", {
         room_name: courseName,
         
       },{
