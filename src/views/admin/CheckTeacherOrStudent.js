@@ -1,6 +1,13 @@
 import React from "react";
 import axios from "axios";
-import CourseCard from './CourseCard';
+import HeaderStats from "../../components/Headers/HeaderStats.js";
+import FooterAdmin from "../../components/Footers/FooterAdmin.js";
+import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
+import AddCourseForm from "../../components/Forms/AddCourseForm.js";
+
+import CourseCard from '../../components/Cards/CourseCard.js';
+import AddCourse from "./AddCourse.js";
+
 import coursecover1 from "../../assets/img/coursecover1.jpg";
 import coursecover2 from "../../assets/img/coursecover2.png";
 import coursecover3 from "../../assets/img/coursecover3.png";
@@ -10,11 +17,27 @@ import coursecover6 from "../../assets/img/coursecover6.png";
 import coursecover7 from "../../assets/img/coursecover7.png";
 import coursecover8 from "../../assets/img/coursecover8.jpg";
 
-// components
-
-export default function CardProfile(props) {
-
-  const [error, setError] = React.useState(null);
+/*
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ]
+  }
+  ```
+*/
+export default function CheckTeacherOrStudent(props) {
+    const [role, setroleData] = React.useState(
+        localStorage.getItem('role') || ''
+      );
+      const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
   const token = props.token;
@@ -35,9 +58,9 @@ export default function CardProfile(props) {
 
   if(isLoaded==false){
     axios
-    .get("https://project-api.fenstrok.com/api/my-courses/", {
+    .get("https://project-api.fenstrok.com/api/clasroom/", {
       headers: {
-        Authorization: `Token ${token}`,
+        // Authorization: `Token ${token}`,
         
       },
     })
@@ -52,10 +75,22 @@ export default function CardProfile(props) {
       console.log("An error occurred:", error.response);
     });
   }
-
   return (
     <>
-      <div class="px-8 pb-5">
+    <AdminNavbar />
+
+    <HeaderStats />
+    <div className="relative  bg-blueGray-100">
+        
+        <div className="px-10 md:px-10 mx-auto w-full -m-24 mb-6">
+          <div className="flex flex-wrap"></div>
+          <div className="w-full  px-4">
+            <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded">
+              <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
+              {role=="T"?(
+          <AddCourseForm/>
+      ):
+      <div class="px-6 py-5">
       
               <div className="flex flex-wrap mx-auto">
                 {items.map((item) => (
@@ -64,24 +99,31 @@ export default function CardProfile(props) {
                   
                   >
                     <div className="bg-white">
-                    <button
-                    className="hover:shadow-md focus:outline-none"
-                    onClick={()=>{props.history.push("/coursedetails", { roomid: item.id });}}
-                    >
+                    
+                
                     <CourseCard
                       history={props.history}
                       statTitle={item.room_name}
                       statSubtitle={item.created_by}
                       coursecover={coursecover[(i>6)?i=0:i++]}
                       id={item.id}
-                      showButton={false}
+                      showButton={true}
                     />
-                    </button>
+                   
                   </div>
                   </div>
                 ))}
               </div>
             </div>
+      }
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <FooterAdmin/>
     </>
   );
 }

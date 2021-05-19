@@ -12,6 +12,7 @@ import Login from "../views/auth/Login.js";
 import Register from "../views/auth/Register.js";
 
 export default function Auth() {
+  var role="t";
   return (
     <>
       {/* <Navbar transparent /> */}
@@ -22,8 +23,8 @@ export default function Auth() {
             
           ></div>  */}
           <Switch>
-            <Route path="/auth/login" exact component={Login} />
-            <Route path="/auth/register" exact component={withRouter(Register)} />
+            <Route path="/auth/login/"  component={Login} />
+            <Route path="/auth/register/:role?"  component={withRouter(Register)} />
             <Redirect from="/auth" to="/auth/login" />
           </Switch>
          

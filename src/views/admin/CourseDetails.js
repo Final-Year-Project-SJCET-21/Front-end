@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { BrowserRouter, Switch, Route, Redirect, Link } from "react-router-dom";
 
 // components
@@ -9,8 +10,72 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 // views
 
 import Dashboard from "./Dashboard.js";
+import { useState } from "react";
 
 export default function CourseDetails(props) {
+  const [isSucess, setisSucess] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const id = props.history.location.state.roomid;
+  const [token, setToken] = React.useState(
+    localStorage.getItem('key') || ''
+  );
+  console.log(id);
+  if (isLoaded == false) {
+    axios
+      .get(
+        `https://project-api.fenstrok.com/api/clasroom/${id}`,
+        {},
+        {
+          headers: {
+            // 'Authorization': `Token ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        // Handle success.
+        console.log("Well done!");
+        setIsLoaded(true);
+        setItems(response.data);
+      })
+      .catch((error) => {
+        // Handle error.
+        console.log("An error occurred:", error);
+      });
+  }
+
+  const handleDelete=(evt)=>{
+    
+    evt.preventDefault();
+    
+    axios
+      .delete(`https://project-api.fenstrok.com/api/clasroom/${id}/`, {
+        
+          
+        
+                
+      },{
+        headers: {
+            'Authorization': `Token ${token}`,
+            
+          },
+        }
+      
+      )
+      .then((response) => {
+        // Handle success.
+        console.log("Well done!");
+
+        
+        setisSucess(true);
+        alert("success");
+      })
+      .catch((error) => {
+        // Handle error.
+        console.log("An error occurred:", error);
+      });
+  }
+
   return (
     <>
       <div className="relative  bg-blueGray-100">
@@ -21,13 +86,40 @@ export default function CourseDetails(props) {
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
-              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded">
-                <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
-                  <div className="flex flex-wrap items-center">
-                    <div className="relative w-full max-w-full flex-grow flex-1">
-                      <h6 className="uppercase text-blueGray-400 mb-1 text-xs font-semibold"></h6>
-                      <h2 className="text-blueGray-700 text-xl font-semibold"></h2>
+              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg">
+                <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
+                  <div className="flex flex-row float-right ">
+                    <button
+                      className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                      type="button"
+                      // onClick={()=>{props.history.push("/addcourse", { token: props.token });}}
+                    >
+                      <h1 className="">View Attendance</h1>
+                    </button>
+
+                    <div class="flex flex-row  items-center justify-center bg-grey-lighter">
+                      <label class=" flex flex-row items-center justify-center px-3 py-2 bg-white text-indigo-500 rounded-lg shadow-lg tracking-wide border border-indigo-500 cursor-pointer hover:bg-indigo-500 hover:text-white">
+                        <svg
+                          class="w-8 h-8"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <span class=" mx-2 text-sm font-semibold ">
+                          Upload a file
+                        </span>
+                        <input type="file" class="hidden" />
+                      </label>
                     </div>
+                    <button
+                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
 
@@ -49,21 +141,21 @@ export default function CourseDetails(props) {
                           </div>
                           <div className="flex-1">
                             <p className="text-gray-500 font-semibold text-sm">
-                              Data Mining
+                              {items.room_name}
                             </p>
                             <div className="flex items-baseline space-x-4">
                               <h2 className="text-l font-semibold">
-                                Module 1 Notes
+                                57 Students Enrolled
                               </h2>
                             </div>
                           </div>
                         </div>
-                        <a
-                          href="#"
-                          className="block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
+                        <button
+                          onClick={()=>{props.history.push("/enrolledstudents", { roomid: id });}}
+                          className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
                         >
-                          Download
-                        </a>
+                          View all
+                        </button>
                       </div>
                     </div>
                   </div>

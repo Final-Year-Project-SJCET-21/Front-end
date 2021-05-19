@@ -13,25 +13,31 @@ import {
 } from "react-router-dom";
 
 export default function Login(props) {
+  var url = "https://project-api.fenstrok.com/rest-auth/login/";
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
   const [isSucess, setisSucess] = useState(false);
+  // console.log(props.match.params.role);
+  
 
   const handleSignin = (evt) => {
     evt.preventDefault();
     
     axios
-      .post("https://project-api.fenstrok.com/rest-auth/login/", {
+      .post(url, {
         email: email,
         password: password,
       })
       .then((response) => {
         // Handle success.
         console.log("Well done!");
-
+        console.log("User token", response.data);
         console.log("User token", response.data.key);
         localStorage.setItem("key", response.data.key);
+        localStorage.setItem("userid", response.data.user.id);
+        localStorage.setItem("role", response.data.user.role);
+        
         setToken(response.data.key);
         setisSucess(true);
       })
@@ -116,17 +122,7 @@ export default function Login(props) {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <span class="text-gray-700 block  text-blueGray-600 text-xs font-bold mb-0">Account Type</span>
-                        <div class="mt-2">
-                          <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="accountType" value="personal"/>
-                            <span class="ml-2 block  text-blueGray-600 text-xs font-bold ">Teacher</span>
-                          </label>
-                          <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" value="busines"/>
-                            <span class="ml-2  text-blueGray-600 text-xs font-bold ">Student</span>
-                          </label>
-                        </div>
+                  
                   <div>
                     
                     <label className="inline-flex items-center cursor-pointer mt-4">

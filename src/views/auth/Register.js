@@ -10,17 +10,23 @@ import {
 import AuthBase from "./Base";
 export default function Register(props) {
 
+  var url = "https://project-api.fenstrok.com/rest-auth/registration/";
+
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [isSucess, setisSucess] = useState(false);
   const [token, setToken] = useState("");
+  console.log(props.match.params.role);
 
+  if(props.match.params.role=="teacher"){
+    url+="teacher";
+  }
   const handleSignup = (evt) => {
     evt.preventDefault();
     // alert(`Submitting Name ${username} ${email} ${password}`)
     axios
-    .post('https://project-api.fenstrok.com/rest-auth/registration/', {
+    .post(url, {
       name: username,
       email: email,
       password1: password,
@@ -35,6 +41,8 @@ export default function Register(props) {
       setToken(response.data.key);
       setisSucess(true);
       localStorage.setItem("key", response.data.key);
+      localStorage.setItem("userid", response.data.user.id);
+      localStorage.setItem("role", response.data.user.role);
       
       
     })
@@ -140,18 +148,7 @@ if(isSucess){
                       onChange={e => setPassword(e.target.value)}
                     />
                   </div>
-                  <span class="text-gray-700 block  text-blueGray-600 text-xs font-bold mb-0">Account Type</span>
-                        <div class="mt-2">
-                          <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="accountType" value="personal"/>
-                            <span class="ml-2 block  text-blueGray-600 text-xs font-bold ">Teacher</span>
-                          </label>
-                          <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" value="busines"/>
-                            <span class="ml-2  text-blueGray-600 text-xs font-bold ">Student</span>
-                          </label>
-                        </div>
-                  <div></div>
+                  
                   <div>
                     <label className="inline-flex items-center cursor-pointer mt-4">
                       <input
