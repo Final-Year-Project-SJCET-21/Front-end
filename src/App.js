@@ -6,11 +6,13 @@ import Admin from "./layouts/Admin";
 import Auth from "./layouts/Auth"; 
 import Header from './components/HomePage/homePage'
 import FaceApi from './components/Face/Face'
-import AddCourse from './views/admin/AddCourse'
+import AddNotes from './views/admin/AddNotes'
+import AddFolder from './views/admin/AddFolder'
 import CheckTeacherOrStudent from './views/admin/CheckTeacherOrStudent'
 import Profile from './views/Profile'
 import CourseDetails from './views/admin/CourseDetails'
 import EnrolledStudents from './views/admin/EnrolledStudents'
+import Folder from './views/admin/Folder'
 
 import {
   BrowserRouter,
@@ -31,6 +33,8 @@ function App() {
           <Route path="/coursedetails" component={CourseDetails } />
           <Route path="/add" component={CheckTeacherOrStudent} />
           <Route path="/enrolledstudents" component={EnrolledStudents} />
+          <Route path="/addfolder" component={AddFolder} />
+          <Route path="/folder" component={Folder} />
           {/* s */}
           
           {/* add routes without layouts */}

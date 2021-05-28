@@ -49,6 +49,7 @@ export default function Register(props) {
     .catch(error => {
       // Handle error.
       console.log('An error occurred:', error.response);
+      alert("Couldn't log you in. Check if all the feilds are correct.");
     });
 }
 

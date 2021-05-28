@@ -34,6 +34,9 @@ import coursecover8 from "../../assets/img/coursecover8.jpg";
   ```
 */
 export default function CheckTeacherOrStudent(props) {
+
+  const url="https://project-api.fenstrok.com/api/clasroom/";
+  
     const [role, setroleData] = React.useState(
         localStorage.getItem('role') || ''
       );
@@ -88,7 +91,13 @@ export default function CheckTeacherOrStudent(props) {
             <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
               {role=="T"?(
-          <AddCourseForm/>
+          <AddCourseForm
+          name="Course Name"
+          filename="Cover Photo"
+          showUpload= {false}
+                
+                url= {url}
+          />
       ):
       <div class="px-6 py-5">
       

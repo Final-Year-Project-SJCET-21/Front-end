@@ -21,9 +21,12 @@ import * as faceapi from "face-api.js";
 export default function FaceApi() {
   const height=480;
   const width=640;
+  var minutes=0;
+  var choice="false";
 
   const [initializing, setInitializing] = useState(false);
   const [active, setActive] = useState("");
+  const [start, setStart] = useState("hgchg");
   const videoRef = useRef();
   const canvaRef = useRef();
 
@@ -50,6 +53,14 @@ export default function FaceApi() {
     err => console.log(err)
     )
   }
+  const handleClick=()=>{
+    setStart("true"); 
+    
+    
+    if(start=="true"){
+      console.log("clicked");
+    }
+  }
 
   const handleVideoPlay=()=>{
     setInterval(async()=>{
@@ -59,21 +70,37 @@ export default function FaceApi() {
       // faceapi.draw.drawDetections(canvas, resizedDetections)
       // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
       // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-      if(detections.length>0){
+      if(detections.length>0 ){
         setActive("Active");
+
+        minutes=minutes+0.00166667;
+        
       }else{
         setActive("Not Active");
       }
-      console.log(detections.length);
+
+      
+      console.log(minutes);
+      // console.log(active);
     },100)
   }
 
+  
 
   return (
     <div className="App">
       <span>{active}</span>
       <video ref={videoRef} autoPlay muted height={height} width={width} onPlay={handleVideoPlay}/>
       <canva ref = {canvaRef}/>
+      {/* <button
+      onClick={handleClick}
+      >Start</button>
+      <br/>
+      <button
+      onClick={handleClick}
+      >Stop</button>
+      <h1>{start}</h1> */}
+      
     </div>
   );
 }

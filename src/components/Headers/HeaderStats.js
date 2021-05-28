@@ -25,7 +25,7 @@ export default function HeaderStats(props) {
           <div className="flex flex-row items-center">
           <h1 className="text-white font-bold text-3xl">Hey, Johan Issac </h1>
           
-          <img className="h-20" src={hand}/>
+          <img className="h-10 pl-3" src={hand}/>
           </div>
           <p className="text-white ">Welcome to your learning dashboard</p>
           </div>

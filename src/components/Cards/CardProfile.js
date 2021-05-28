@@ -10,6 +10,7 @@ import coursecover6 from "../../assets/img/coursecover6.png";
 import coursecover7 from "../../assets/img/coursecover7.png";
 import coursecover8 from "../../assets/img/coursecover8.jpg";
 
+
 // components
 
 export default function CardProfile(props) {
@@ -20,12 +21,13 @@ export default function CardProfile(props) {
   const token = props.token;
 
   var coursecover = [
-    coursecover8,
-    coursecover2,
+   
     coursecover3,
     coursecover5,
-    coursecover6,
+    coursecover2,    
     coursecover7,
+    coursecover6,    
+    coursecover8,    
     coursecover1,
 
     
@@ -66,7 +68,7 @@ export default function CardProfile(props) {
                     <div className="bg-white">
                     <button
                     className="hover:shadow-md focus:outline-none"
-                    onClick={()=>{props.history.push("/coursedetails", { roomid: item.id });}}
+                    onClick={()=>{props.history.push("/coursedetails", { roomid: item.id, })}}
                     >
                     <CourseCard
                       history={props.history}
