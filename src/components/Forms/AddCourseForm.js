@@ -74,51 +74,7 @@ export default function AddCourseForm({
       });
   };
 
-  function submitForm(contentType, data, setResponse) {
-    axios
-      .post({
-        url: `https://project-api.fenstrok.com/api/clasroom/${classroomid}/modules/1/`,
-        method: "POST",
-        data: data,
-        headers: {
-          "Content-Type": contentType,
-        },
-      })
-      .then((response) => {
-        setResponse(response.data);
-      })
-      .catch((error) => {
-        setResponse("error");
-      });
-  }
-
-  function uploadWithFormData(evt) {
-    evt.preventDefault();
-    const formData = new FormData();
-    formData.append("filename", courseName);
-    formData.append("description", desc);
-    // formData.append("desc", desc);
-
-    submitForm("multipart/form-data", formData, (msg) => console.log(msg));
-  }
-
-  async function uploadWithJSON() {
-    const toBase64 = (file) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
-
-    const data = {
-      filename: courseName,
-      file: await toBase64(file),
-      description: desc,
-    };
-
-    submitForm("application/json", data, (msg) => console.log(msg));
-  }
+  
 
   return (
     <>
