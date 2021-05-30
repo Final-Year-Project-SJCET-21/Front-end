@@ -31,7 +31,7 @@ export default function ModuleCard({
   return (
     <>
         <div className=" flex items-center justify-center ">
-                  <div className="bg-white p-4 rounded w-full">
+                  <div className="bg-white p-3 rounded w-full">
                     <div className=" max-w-2xl mt-4 mx-auto">
                       <div className=" border rounded-lg">
                         <div className="flex items-center space-x-4 p-4">

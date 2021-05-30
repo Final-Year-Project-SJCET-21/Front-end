@@ -128,7 +128,7 @@ export default function CourseDetails(props) {
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
-              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg">
+              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
                 <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
                   {role == "T" ? (
                     <div className="flex flex-row float-right ">

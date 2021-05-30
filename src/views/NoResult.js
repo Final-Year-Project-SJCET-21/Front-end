@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default function Folder(props) {
+export default function NoResult(props) {
 
   
   
