@@ -19,8 +19,8 @@ import * as faceapi from "face-api.js";
 
 
 export default function FaceApi() {
-  const height=480;
-  const width=640;
+  const height=0;
+  const width=0;
   var minutes=0;
   var choice="false";
 

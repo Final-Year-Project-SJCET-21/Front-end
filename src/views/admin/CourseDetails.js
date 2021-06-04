@@ -130,6 +130,13 @@ export default function CourseDetails(props) {
             <div className="w-full  px-4">
               <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
                 <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
+                <button
+                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        type="button"
+                        onClick={() => {
+                          props.history.push("/videocall",{ courseName:courseName.room_name  } );
+                        }}
+                      > Join classroom</button>
                   {role == "T" ? (
                     <div className="flex flex-row float-right ">
                       <button

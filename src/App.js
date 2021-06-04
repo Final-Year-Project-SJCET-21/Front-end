@@ -6,6 +6,7 @@ import Admin from "./layouts/Admin";
 import Auth from "./layouts/Auth"; 
 import Header from './components/HomePage/homePage'
 import FaceApi from './components/Face/Face'
+import VideoCallWrapper from './components/video_room/VideoCallWrapper'
 import AddNotes from './views/admin/AddNotes'
 import AddFolder from './views/admin/AddFolder'
 import CheckTeacherOrStudent from './views/admin/CheckTeacherOrStudent'
@@ -35,6 +36,7 @@ function App() {
           <Route path="/enrolledstudents" component={EnrolledStudents} />
           <Route path="/addfolder" component={AddFolder} />
           <Route path="/folder" component={Folder} />
+          <Route path="/videocall" component={VideoCallWrapper} />
           {/* s */}
           
           {/* add routes without layouts */}
