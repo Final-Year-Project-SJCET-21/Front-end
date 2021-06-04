@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { NavLink, } from 'react-router-dom';
 import axios from "axios";
 import history from '../../history.js';
 
@@ -9,7 +10,9 @@ export default function ModuleCard({
   history,
   id,
   moduleName,
-  moduleId
+  moduleId,
+  description,
+  url
   
  
 }) {
@@ -23,7 +26,7 @@ export default function ModuleCard({
   const [role, setroleData] = React.useState(
     localStorage.getItem('role') || ''
   );
-
+  
   
 
   
@@ -59,7 +62,7 @@ export default function ModuleCard({
                           </div>
                           <div className="flex-1">
                             <p className="text-gray-500 font-semibold text-sm">
-                              
+                              {description}
                             </p>
                             <div className="flex items-baseline space-x-4">
                               <h2 className="text-l font-semibold">
@@ -68,12 +71,19 @@ export default function ModuleCard({
                             </div>
                           </div>
                         </div>
+                        
+                        {url!=""?(<a 
+                        href={url}
+                        className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
+                        >download</a>):
                         <button
-                           onClick={()=>{history.push("/folder", { roomid: id, moduleId: moduleId,   });}}
-                          className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
-                        >
-                          View
-                        </button>
+                        onClick={()=>{history.push("/folder", { roomid: id, moduleId: moduleId,   });}}
+                       className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
+                     >
+                       View
+                     </button>
+                        }
+                        
                       </div>
                     </div>
                   </div>
@@ -94,14 +104,17 @@ ModuleCard.defaultProps = {
   // statDescripiron: "Since last month",
   // statIconName: "far fa-chart-bar",
   // statIconColor: "bg-red-500",
+  description: "",
+  url:""
 };
 
 ModuleCard.propTypes = {
 moduleName: PropTypes.string,
 moduleId: PropTypes.number,
 id: PropTypes.number,
-
-history : PropTypes.any
+description : PropTypes.string,
+history : PropTypes.any,
+url: PropTypes.string
  
  
 };

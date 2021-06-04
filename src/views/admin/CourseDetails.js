@@ -136,7 +136,7 @@ export default function CourseDetails(props) {
                         onClick={() => {
                           props.history.push("/videocall",{ courseName:courseName.room_name  } );
                         }}
-                      > Join classroom</button>
+                      > Join video call</button>
                   {role == "T" ? (
                     <div className="flex flex-row float-right ">
                       <button
@@ -191,6 +191,7 @@ export default function CourseDetails(props) {
                     id={id}
                     moduleId={module.id}
                     moduleName={module.module_name}
+                    
                   />
                 ))}
               </div>

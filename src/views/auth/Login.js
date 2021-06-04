@@ -37,6 +37,7 @@ export default function Login(props) {
         localStorage.setItem("key", response.data.key);
         localStorage.setItem("userid", response.data.user.id);
         localStorage.setItem("role", response.data.user.role);
+        localStorage.setItem("username", response.data.user.name);
         
         setToken(response.data.key);
         setisSucess(true);

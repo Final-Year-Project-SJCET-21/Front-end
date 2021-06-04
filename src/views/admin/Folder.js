@@ -228,6 +228,8 @@ export default function Folder(props) {
                     // id={id}
                     // moduleId={module.id}
                     moduleName={item.filename}
+                    description={item.description}
+                    url={item.document}
                   />
                 ))}
               </div>

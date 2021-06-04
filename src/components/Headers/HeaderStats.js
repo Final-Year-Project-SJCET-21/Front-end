@@ -9,6 +9,9 @@ export default function HeaderStats(props) {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const [username, setusernameData] = React.useState(
+    localStorage.getItem("username") || ""
+  );
   const token = props.token;
 
   
@@ -23,7 +26,7 @@ export default function HeaderStats(props) {
           <div >
           <div className="w-full lg:w-6/12  px-4">
           <div className="flex flex-row items-center">
-          <h1 className="text-white font-bold text-3xl">Hey, Johan Issac </h1>
+          <h1 className="text-white font-bold text-3xl">Hey, {username} </h1>
           
           <img className="h-10 pl-3" src={hand}/>
           </div>
