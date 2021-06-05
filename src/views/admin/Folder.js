@@ -4,6 +4,7 @@ import FooterAdmin from "../../components/Footers/FooterAdmin.js";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import AddCourseForm from "../../components/Forms/AddCourseForm";
 import ModuleCard from "../../components/Cards/ModuleCard";
+import NoResult from "../../views/NoResult"
 import Popup from "reactjs-popup";
 import axios from "axios";
 
@@ -47,6 +48,10 @@ export default function Folder(props) {
   }
   // const url=`https://project-api.fenstrok.com/api/clasroom/${props.history.location.state.classroomid}/modules/`
 
+  function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+
   function submitForm(contentType, data, setResponse) {
     axios
       .post({
@@ -74,6 +79,8 @@ export default function Folder(props) {
     formData.append("description", desc);
     formData.append("document", file);
 
+
+   
     // submitForm("multipart/form-data", formData, (msg) => console.log(msg));
     axios.post(`https://project-api.fenstrok.com/api/clasroom/${props.history.location.state.roomid}/modules/${props.history.location.state.moduleId}/notes/`, 
     formData, 
@@ -221,7 +228,8 @@ export default function Folder(props) {
                   </div>
                 </div>
               </div>
-              <div className="rounded-t mb-0 px-4 pb-20 bg-transparent">
+              {isEmpty(items)?(<NoResult/>):(
+                <div className="rounded-t mb-0 px-4 pb-20 bg-transparent">
                 {items.map((item) => (
                   <ModuleCard
                     history={props.history}
@@ -233,6 +241,7 @@ export default function Folder(props) {
                   />
                 ))}
               </div>
+              )}
             </div>
           </div>
         </div>
