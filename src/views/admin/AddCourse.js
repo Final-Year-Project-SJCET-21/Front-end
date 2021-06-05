@@ -21,6 +21,7 @@ import AddCourseForm from "../../components/Forms/AddCourseForm";
   ```
 */
 export default function AddCourse(props) {
+  const url="https://project-api.fenstrok.com/api/clasroom/"
   return (
     <>
       <div className="relative  bg-blueGray-100">
@@ -30,7 +31,10 @@ export default function AddCourse(props) {
           <div className="w-full  px-4">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
-                <AddCourseForm />
+                <AddCourseForm 
+              
+                
+                />
               </div>
             </div>
           </div>

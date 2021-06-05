@@ -42,10 +42,10 @@ export default function AddCourseForm({
   const [isSucess, setisSucess] = useState(false);
 
   const [token, setToken] = React.useState(localStorage.getItem("key") || "");
-  console.log(token);
+  // console.log(namefield);
 
   const handlePost = (evt) => {
-    console.log(token);
+   
     evt.preventDefault();
 
     axios
@@ -53,7 +53,7 @@ export default function AddCourseForm({
         url,
         {
           [namefield]: courseName,
-          [descfield]: desc,
+          // [descfield]: desc,
         },
         {
           headers: {

@@ -97,6 +97,7 @@ export default function CheckTeacherOrStudent(props) {
           showUpload= {false}
                 
                 url= {url}
+                namefield="room_name"
           />
       ):
       <div class="px-6 py-5">
