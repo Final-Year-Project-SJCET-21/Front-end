@@ -42,6 +42,8 @@ export default function AddCourseForm({
   const [isSucess, setisSucess] = useState(false);
 
   const [token, setToken] = React.useState(localStorage.getItem("key") || "");
+  const [errorName, setErrorName] = useState("");
+  const [errorDesc, setErrorDesc] = useState("");
   // console.log(namefield);
 
   const handlePost = (evt) => {
@@ -74,6 +76,31 @@ export default function AddCourseForm({
       });
   };
 
+  const myChangeHandlerName= (evt)=>{
+    let err = '';
+    let val = evt.target.value;
+    if(val!==""){
+      setErrorName("")
+      setCourseName(evt.target.value)
+    }
+    else{
+      setErrorName("This field cannot be empty")
+    }
+
+  }
+
+  const myChangeHandlerDesc= (evt)=>{
+    let err = '';
+    let val = evt.target.value;
+    if(val!==""){
+      setErrorDesc("")
+      setDesc(evt.target.value)
+    }
+    else{
+      setErrorDesc("This field cannot be empty")
+    }
+
+  }
   
 
   return (
@@ -83,7 +110,7 @@ export default function AddCourseForm({
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST" onSubmit={handlePost}>
               <div className=" sm:rounded-md sm:overflow-hidden">
-                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                <div className="px-4 py-0 bg-white space-y-0 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
                       <label
@@ -99,12 +126,14 @@ export default function AddCourseForm({
                           id="company_website"
                           className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm  focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           placeholder={name}
-                          onChange={(e) => setCourseName(e.target.value)}
+                          onChange={myChangeHandlerName}
                         />
+                        
                       </div>
                     </div>
+                   
                   </div>
-
+                  <p className="text-sm text-red-600">{errorName}</p>
                   <div>
                     <label
                       htmlFor="about"
@@ -120,9 +149,10 @@ export default function AddCourseForm({
                         className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm  focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Description"
                         defaultValue={""}
-                        onChange={(e) => setDesc(e.target.value)}
+                        onChange={myChangeHandlerDesc}
                       />
                     </div>
+                    <p className="text-sm text-red-600">{errorDesc}</p>
                     <p className="mt-2 text-sm text-gray-500">
                       Brief description for your profile.
                     </p>

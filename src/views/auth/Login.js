@@ -11,13 +11,17 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export default function Login(props) {
   var url = "https://project-api.fenstrok.com/rest-auth/login/";
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
+  const [erroremail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
   const [isSucess, setisSucess] = useState(false);
+  const { register, handleSubmit, errors } = useForm();
   // console.log(props.match.params.role);
   
 
@@ -48,6 +52,34 @@ export default function Login(props) {
         alert("Couldn't log you in. Check if all the feilds are correct.");
       });
   };
+
+    const myChangeHandlerEmail= (evt)=>{
+      let err = '';
+      let val = evt.target.value;
+      if(val!==""){
+        setErrorEmail("")
+        setEmail(evt.target.value);
+      }
+      else{
+        setErrorEmail("This field cannot be empty")
+      }
+
+    }
+
+    const myChangeHandlerPassword= (evt)=>{
+      let err = '';
+      let val = evt.target.value;
+
+      if(val!==""){
+        setPassword(evt.target.value);
+        setErrorPassword("")
+      }
+      else{
+        setErrorPassword("This field cannot be empty")
+      }
+
+    }
+
 
   if (isSucess) {
     props.history.push("/admin", { jwt: token });
@@ -94,7 +126,7 @@ export default function Login(props) {
                   <small>Sign in with credentials</small>
                 </div>
                 
-                <form>
+                <form onSubmit={handleSignin}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block  text-blueGray-600 text-xs font-bold mb-2"
@@ -106,8 +138,12 @@ export default function Login(props) {
                       type="email"
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm  focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
+                      onChange={
+                        myChangeHandlerEmail
+                        }
+                      />
+                       <p className="text-sm text-red-600">{erroremail}</p>
+                    
                   </div>
 
                   <div className="relative w-full mb-3">
@@ -121,8 +157,14 @@ export default function Login(props) {
                       type="password"
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
+                      onChange={
+                        myChangeHandlerPassword
+                        }
+                      
+            name="password"
+            />
+            <p className="text-sm text-red-600">{errorPassword}</p>
+                    
                   </div>
                   
                   <div>
@@ -142,8 +184,8 @@ export default function Login(props) {
                   <div className="text-center mt-6">
                     <button
                       className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={handleSignin}
+                      
+                      type="submit"
                     >
                       Sign In
                     </button>

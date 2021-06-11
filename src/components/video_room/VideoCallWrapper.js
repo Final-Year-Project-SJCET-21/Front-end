@@ -34,6 +34,7 @@ export default function VideoCallWrapper (props){
         roomName={room}
         password={password}
         displayName={name}
+        // containerStyles={{ width: '1200px', height: '800px' }}
         onMeetingEnd={() => console.log('Meeting has ended')}
         loadingComponent={<p>ʕ Video is loading ...</p>} />
         </div>)

@@ -157,17 +157,18 @@ export default function CourseDetails(props) {
                           <h1 className="pl-2">Create New Folder</h1>
                         </div>
                       </button>
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                  {/* <button
-                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
+                      <button
+                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
                       type="button"
                       onClick={handleDelete}
                     >
                       Delete
-                    </button> */}
+                    </button>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                  
                 </div>
 
                 <div className=" flex items-center justify-center ">
