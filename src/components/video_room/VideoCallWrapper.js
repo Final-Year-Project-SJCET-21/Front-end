@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import VideoRoomComponent from './components/VideoRoomComponent';
 import { Jutsu } from 'react-jutsu'
 import Face from '../Face/Face'
 
@@ -9,7 +9,7 @@ export default function VideoCallWrapper (props){
     localStorage.getItem("username") || ""
   );
   const [call, setCall] = useState(false)
-  const [password, setPassword] = useState('')
+  // const [password, setPassword] = useState('')
   // const [username, setusernameData] = React.useState(
   //   localStorage.getItem("username") || ""
   // );
@@ -30,12 +30,7 @@ export default function VideoCallWrapper (props){
       {call ? (
         <div>
         <Face/>
-      <Jutsu
-        roomName={room}
-        password={password}
-        displayName={name}
-        onMeetingEnd={() => console.log('Meeting has ended')}
-        loadingComponent={<p>ʕ Video is loading ...</p>} />
+        <VideoRoomComponent openviduServerUrl="https://video.fenstrok.com" openviduSecret="justin_123"/>
         </div>)
         : (
           <form>
