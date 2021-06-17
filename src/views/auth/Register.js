@@ -23,7 +23,7 @@ export default function Register(props) {
   const [errorPassword, setErrorPassword] = useState("");
   console.log(props.match.params.role);
 
-  if(props.match.params.role=="teacher"){
+  if(props.match.params.role==="teacher"){
     url+="teacher";
   }
   const handleSignup = (evt) => {
@@ -124,9 +124,7 @@ if(isSucess){
   return (
     <AuthBase>
 
-      <div className="container mx-auto px-4 h-full">
-        <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full px-4">
+                <div className="w-full md:w-5/6 px-4">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
@@ -214,25 +212,7 @@ if(isSucess){
                     <p className="text-sm text-red-600">{errorPassword}</p>
                   </div>
                   
-                  <div>
-                    <label className="inline-flex items-center cursor-pointer mt-4">
-                      <input
-                        id="customCheckLogin"
-                        type="checkbox"
-                        className="form-checkbox border border-gray-200 rounded text-blueGray-700 ml-0 w-5 h-5 ease-linear transition-all duration-150"
-                      />
-                      <span className="ml-2 text-sm font-semibold text-blueGray-600">
-                        I agree with the{" "}
-                        <a
-                          href="#pablo"
-                          className="text-lightBlue-500"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Privacy Policy
-                        </a>
-                      </span>
-                    </label>
-                  </div>
+
 
                   <div className="text-center mt-6">
                     <Link to='/admin'>
@@ -249,8 +229,7 @@ if(isSucess){
               </div>
             </div>
           </div>
-        </div>
-      </div>
+
     </AuthBase>
   );
 }
