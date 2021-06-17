@@ -74,7 +74,8 @@ export default function FaceApi(props) {
       if(detections.length>0 ){
         setActive("Active");
 
-        minutes=minutes+0.00166667;
+        minutes=minutes+1;
+        console.log(minutes);
         props.passActiveTime(minutes);
         
       }else{
@@ -84,7 +85,7 @@ export default function FaceApi(props) {
       
       console.log(minutes);
       // console.log(active);
-    },100)
+    },1000)
   }
 
   

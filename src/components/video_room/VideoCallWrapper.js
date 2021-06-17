@@ -31,7 +31,7 @@ export default function VideoCallWrapper (props){
       {call ? (
         <div>
         <Face passActiveTime={setActiveTime}/>
-        <VideoRoomComponent openviduServerUrl="https://video.fenstrok.com" openviduSecret="justin_123"/>
+        {/* <VideoRoomComponent openviduServerUrl="https://video.fenstrok.com" openviduSecret="justin_123"/> */}
         </div>)
         : (
           <form>
