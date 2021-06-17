@@ -18,7 +18,7 @@ import React, {useState, useEffect, useRef  } from "react";
 import * as faceapi from "face-api.js";
 
 
-export default function FaceApi() {
+export default function FaceApi(props) {
   const height=0;
   const width=0;
   var minutes=0;
@@ -27,6 +27,7 @@ export default function FaceApi() {
   const [initializing, setInitializing] = useState(false);
   const [active, setActive] = useState("");
   const [start, setStart] = useState("hgchg");
+  
   const videoRef = useRef();
   const canvaRef = useRef();
 
@@ -74,6 +75,7 @@ export default function FaceApi() {
         setActive("Active");
 
         minutes=minutes+0.00166667;
+        props.passActiveTime(minutes);
         
       }else{
         setActive("Not Active");

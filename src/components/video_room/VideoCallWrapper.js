@@ -8,6 +8,7 @@ export default function VideoCallWrapper (props){
   const [name, setName] = React.useState(
     localStorage.getItem("username") || ""
   );
+  const [activeTime,setActiveTime] = useState(0);
   const [call, setCall] = useState(false)
   // const [password, setPassword] = useState('')
   // const [username, setusernameData] = React.useState(
@@ -26,10 +27,10 @@ export default function VideoCallWrapper (props){
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
               <div className="flex flex-col justify-items-center justify-center align-middle items-center min-w-0 min-h-full break-words bg-white w-full mb-6 shadow-lg rounded-lg p-20">
-              
+              <span className="text-black">{activeTime}</span>
       {call ? (
         <div>
-        <Face/>
+        <Face passActiveTime={setActiveTime}/>
         <VideoRoomComponent openviduServerUrl="https://video.fenstrok.com" openviduSecret="justin_123"/>
         </div>)
         : (

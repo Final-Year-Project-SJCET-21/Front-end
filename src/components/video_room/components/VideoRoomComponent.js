@@ -472,17 +472,21 @@ class VideoRoomComponent extends Component {
                 />
                 <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
 
-                <div id="layout" className="bounds">
+                <div id="layout" className="bounds h-screen flex flex-row">
+                    <div className="w-1/2">
                     {localUser !== undefined && localUser.getStreamManager() !== undefined && (
-                        <div className="OT_root OT_publisher custom-class" id="localUser">
+                        <div className="h-2/5 min-w-screen" id="localUser">
                             <StreamComponent user={localUser} handleNickname={this.nicknameChanged} />
                         </div>
                     )}
+                    </div>
+                    <div className="w-1/2">
                     {this.state.subscribers.map((sub, i) => (
                         <div key={i} className="OT_root OT_publisher custom-class" id="remoteUsers">
                             <StreamComponent user={sub} streamId={sub.streamManager.stream.streamId} />
                         </div>
                     ))}
+                    </div>
 
                 </div>
                

@@ -45,14 +45,14 @@
 
 
 .bounds {
-  background-color: #494949;
-  overflow: hidden;
-  position: absolute;
+  background-color: #fff;
+  overflow: visible;
+  position: relative;
   left: 0;
   right: 0;
   top: 40px;
   bottom: 0;
-  height: inherit;
+  /* height: 400px; */
   min-width: 400px !important;
   width: inherit;
 }
