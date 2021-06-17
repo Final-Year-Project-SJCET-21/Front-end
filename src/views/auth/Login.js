@@ -11,7 +11,7 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
-import { useForm } from "react-hook-form";
+
 
 export default function Login(props) {
   var url = "https://project-api.fenstrok.com/rest-auth/login/";
@@ -21,7 +21,7 @@ export default function Login(props) {
   const [erroremail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [isSucess, setisSucess] = useState(false);
-  const { register, handleSubmit, errors } = useForm();
+  
   // console.log(props.match.params.role);
   
 
@@ -53,18 +53,23 @@ export default function Login(props) {
       });
   };
 
-    const myChangeHandlerEmail= (evt)=>{
-      let err = '';
-      let val = evt.target.value;
-      if(val!==""){
-        setErrorEmail("")
-        setEmail(evt.target.value);
-      }
-      else{
-        setErrorEmail("This field cannot be empty")
-      }
-
+  const myChangeHandlerEmail= (evt)=>{
+    let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let err = '';
+    let val = evt.target.value;
+    if(val==""){
+      setErrorEmail("This field cannot be empty")
     }
+    else if(!regEmail.test(val)){
+      setErrorEmail("Invalid Email")
+    }
+    else{
+      setErrorEmail("")
+      setEmail(evt.target.value);
+      
+    }
+  
+  }
 
     const myChangeHandlerPassword= (evt)=>{
       let err = '';

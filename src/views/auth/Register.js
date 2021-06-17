@@ -8,6 +8,7 @@ import {
   Redirect
 } from "react-router-dom";
 import AuthBase from "./Base";
+import { validateYupSchema } from "formik";
 export default function Register(props) {
 
   var url = "https://project-api.fenstrok.com/rest-auth/registration/";
@@ -17,6 +18,9 @@ export default function Register(props) {
   const [email, setEmail] = useState("");
   const [isSucess, setisSucess] = useState(false);
   const [token, setToken] = useState("");
+  const [errorName, setErrorName] = useState("");
+  const [erroremail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
   console.log(props.match.params.role);
 
   if(props.match.params.role=="teacher"){
@@ -55,6 +59,61 @@ export default function Register(props) {
     });
 }
 
+const myChangeHandlerName = (evt)=>{
+  let err = '';
+  let val = evt.target.value;
+  if(val!==""){
+    setErrorName("")
+    setName(evt.target.value)
+  }
+  else{
+    setErrorName("This field cannot be empty")
+  }
+
+}
+
+const myChangeHandlerEmail= (evt)=>{
+  let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let err = '';
+  let val = evt.target.value;
+  if(val==""){
+    setErrorEmail("This field cannot be empty")
+  }
+  else if(!regEmail.test(val)){
+    setErrorEmail("Invalid Email")
+  }
+  else{
+    setErrorEmail("")
+    setEmail(evt.target.value);
+    
+  }
+
+}
+
+const myChangeHandlerPassword= (evt)=>{
+  var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  let err = '';
+  let val = evt.target.value;
+
+  if(val==""){
+    setErrorPassword("This field cannot be empty")
+  }else if (val.length < 8 && val.length>0) {
+    setErrorPassword("Password is not long enough")
+}
+// Check for capital letters
+else if (!val.match(/\d/)) {
+  setErrorPassword("Must contain a digit")
+}
+else if (!format.test(val)) {
+  setErrorPassword("Must contain a special character")
+}
+  else{
+    
+    setPassword(evt.target.value);
+    setErrorPassword("")
+  }
+
+}
   
 if(isSucess){
   props.history.push('/admin',{jwt:token})
@@ -105,7 +164,7 @@ if(isSucess){
                 <div className="text-blueGray-400 text-center mb-3 ">
                   <small>Or sign up with credentials</small>
                 </div>
-                <form>
+                <form onSubmit={handleSignup}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block text-blueGray-600 text-xs font-bold mb-2"
@@ -118,8 +177,9 @@ if(isSucess){
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Name"
                       // value="username"
-                      onChange={e => setName(e.target.value)}
+                      onChange={myChangeHandlerName}
                     />
+                    <p className="text-sm text-red-600">{errorName}</p>
                   </div>
 
                   <div className="relative w-full mb-3">
@@ -133,8 +193,9 @@ if(isSucess){
                       type="email"
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
-                      onChange={e => setEmail(e.target.value)}
+                      onChange={myChangeHandlerEmail}
                     />
+                    <p className="text-sm text-red-600">{erroremail}</p>
                   </div>
 
                   <div className="relative w-full mb-3">
@@ -148,8 +209,9 @@ if(isSucess){
                       type="password"
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
-                      onChange={e => setPassword(e.target.value)}
+                      onChange={myChangeHandlerPassword}
                     />
+                    <p className="text-sm text-red-600">{errorPassword}</p>
                   </div>
                   
                   <div>
@@ -176,8 +238,8 @@ if(isSucess){
                     <Link to='/admin'>
                     <button
                       className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={handleSignup}
+                      type="submit"
+                      
                     >
                       Create Account
                     </button>
