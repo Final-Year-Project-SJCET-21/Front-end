@@ -4,6 +4,7 @@ import FooterAdmin from "../../components/Footers/FooterAdmin.js";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import AddCourseForm from "../../components/Forms/AddCourseForm";
 import ModuleCard from "../../components/Cards/ModuleCard";
+import NoResult from "../../views/NoResult"
 import Popup from "reactjs-popup";
 import axios from "axios";
 
@@ -18,6 +19,8 @@ export default function Folder(props) {
   const [isSucess, setisSucess] = useState(false);
 
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [errorName, setErrorName] = useState("");
+  const [errorDesc, setErrorDesc] = useState("");
   const [items, setItems] = React.useState([]);
   const [token, setToken] = React.useState(localStorage.getItem("key") || "");
   const [role, setroleData] = React.useState(
@@ -47,6 +50,36 @@ export default function Folder(props) {
   }
   // const url=`https://project-api.fenstrok.com/api/clasroom/${props.history.location.state.classroomid}/modules/`
 
+
+  const myChangeHandlerName= (evt)=>{
+    let err = '';
+    let val = evt.target.value;
+    if(val!==""){
+      setErrorName("")
+      setFileName(evt.target.value)
+    }
+    else{
+      setErrorName("This field cannot be empty")
+    }
+
+  }
+
+  const myChangeHandlerDesc= (evt)=>{
+    let err = '';
+    let val = evt.target.value;
+    if(val!==""){
+      setErrorDesc("")
+      setDesc(evt.target.value)
+    }
+    else{
+      setErrorDesc("This field cannot be empty")
+    }
+
+  }
+  function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+
   function submitForm(contentType, data, setResponse) {
     axios
       .post({
@@ -74,6 +107,8 @@ export default function Folder(props) {
     formData.append("description", desc);
     formData.append("document", file);
 
+
+   
     // submitForm("multipart/form-data", formData, (msg) => console.log(msg));
     axios.post(`https://project-api.fenstrok.com/api/clasroom/${props.history.location.state.roomid}/modules/${props.history.location.state.moduleId}/notes/`, 
     formData, 
@@ -89,6 +124,8 @@ export default function Folder(props) {
         alert("Upload Successfull")
       })
   }
+
+  
 
   
   return (
@@ -134,8 +171,9 @@ export default function Folder(props) {
                               <input
                                 type="text"
                                 class="h-12 px-3 w-full border-gray-200 border-2 rounded focus:outline-none focus:border-purple-800"
-                                onChange={(e) => setFileName(e.target.value)}
+                                onChange={myChangeHandlerName}
                               />{" "}
+                              <p className="text-sm text-red-600">{errorName}</p>
                             </div>
                             <div class="mb-1">
                               {" "}
@@ -143,8 +181,9 @@ export default function Folder(props) {
                               <textarea
                                 type="text"
                                 class="h-24 py-1 px-3 w-full border-2 border-gray-200 rounded focus:outline-none focus:border-purple-800 resize-none"
-                                onChange={(e) => setDesc(e.target.value)}
+                                onChange={myChangeHandlerDesc}
                               ></textarea>{" "}
+                              <p className="text-sm text-red-600">{errorDesc}</p>
                             </div>
                             <div class="mb-1">
                               {" "}
@@ -221,7 +260,8 @@ export default function Folder(props) {
                   </div>
                 </div>
               </div>
-              <div className="rounded-t mb-0 px-4 pb-20 bg-transparent">
+              {isEmpty(items)?(<NoResult/>):(
+                <div className="rounded-t mb-0 px-4 pb-20 bg-transparent">
                 {items.map((item) => (
                   <ModuleCard
                     history={props.history}
@@ -233,6 +273,7 @@ export default function Folder(props) {
                   />
                 ))}
               </div>
+              )}
             </div>
           </div>
         </div>

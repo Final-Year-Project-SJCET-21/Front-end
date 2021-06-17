@@ -98,7 +98,7 @@ export default function CourseDetails(props) {
     axios
       .delete(
         `https://project-api.fenstrok.com/api/clasroom/${id}/`,
-        {},
+        
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -130,19 +130,21 @@ export default function CourseDetails(props) {
             <div className="w-full  px-4">
               <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
                 <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
-                <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
-                        type="button"
-                        onClick={() => {
-                          props.history.push("/videocall",{ courseName:courseName.room_name  } );
-                        }}
-                      > Join video call</button>
+                
                   {role == "T" ? (
+
                     <div className="flex flex-row float-right ">
                       <button
                         className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
                         type="button"
-                        // onClick={()=>{props.history.push("/addcourse", { token: props.token });}}
+                        onClick={() => {
+                          props.history.push("/videocall",{ courseName:courseName.room_name, courseId:courseName.id,  } );
+                        }}
+                      > Start video call</button>
+                      <button
+                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        type="button"
+                        onClick={()=>{props.history.push("/attendance", { token: props.token });}}
                       >
                         <h1 className="">View Attendance</h1>
                       </button>
@@ -157,17 +159,18 @@ export default function CourseDetails(props) {
                           <h1 className="pl-2">Create New Folder</h1>
                         </div>
                       </button>
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                  {/* <button
-                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
+                      <button
+                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
                       type="button"
                       onClick={handleDelete}
                     >
                       Delete
-                    </button> */}
+                    </button>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                  
                 </div>
 
                 <div className=" flex items-center justify-center ">

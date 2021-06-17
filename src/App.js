@@ -14,6 +14,7 @@ import Profile from './views/Profile'
 import CourseDetails from './views/admin/CourseDetails'
 import EnrolledStudents from './views/admin/EnrolledStudents'
 import Folder from './views/admin/Folder'
+import Attendance from './views/admin/Attendance'
 
 import {
   BrowserRouter,
@@ -37,6 +38,7 @@ function App() {
           <Route path="/addfolder" component={AddFolder} />
           <Route path="/folder" component={Folder} />
           <Route path="/videocall" component={VideoCallWrapper} />
+          <Route path="/attendance" component={Attendance} />
           {/* s */}
           
           {/* add routes without layouts */}
