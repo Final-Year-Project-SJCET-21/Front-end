@@ -472,7 +472,7 @@ class VideoRoomComponent extends Component {
                 /> */}
                 <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />
 
-                <div id="layout" className="min-h-full min-w-full">
+                <div id="layout" className="relative h-96 w-96">
                     {localUser !== undefined && localUser.getStreamManager() !== undefined && (
                         <div className="h-96 w-96 flex-1" id="localUser">
                             <StreamComponent user={localUser} handleNickname={this.nicknameChanged} />
