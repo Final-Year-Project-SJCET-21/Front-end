@@ -12,7 +12,7 @@ render() {
             <div className="OT_widget-container">
                
                 {this.props.user !== undefined && this.props.user.getStreamManager() !== undefined ? (
-                    <div className="streamComponent">
+                    <div className="streamComponent ">
                         <OvVideoComponent user={this.props.user} mutedSound={this.state.mutedSound} />
                     </div>
                 ) : null}

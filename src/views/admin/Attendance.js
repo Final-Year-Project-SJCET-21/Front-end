@@ -5,20 +5,9 @@ import FooterAdmin from "../../components/Footers/FooterAdmin.js";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import AddCourseForm from "../../components/Forms/AddCourseForm";
 
-const people = [
-    {
-      name: 'Jane Cooper',
-      title: 'Regional Paradigm Technician',
-      department: 'Optimization',
-      role: 'Admin',
-      email: 'jane.cooper@example.com',
-      image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-    },
-    // More people...
-  ]
+
   
-  export default function Attendance() {
+  export default function Attendance(props) {
     return (
         <div className="relative  bg-blueGray-100">
         <AdminNavbar />
@@ -29,79 +18,98 @@ const people = [
             <div className="w-full  px-4">
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-10 shadow-lg rounded">
                 <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
-      <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Title
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Role
-                    </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      <span className="sr-only">Edit</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {people.map((person) => (
-                    <tr key={person.email}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{person.name}</div>
-                            <div className="text-sm text-gray-500">{person.email}</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person.title}</div>
-                        <div className="text-sm text-gray-500">{person.department}</div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                  
+<div class="container flex flex-col mx-auto w-full items-center justify-center">
+    <ul class="flex flex-col">
+        <li class="border-gray-400 flex flex-row mb-2">
+        <button onClick={() => {
+                  props.history.push("/detailedattendance", );
+                }}>
+
+          
+            <div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-4">
+                
+                <div class="flex-1 pl-1 md:mr-16 text-left">
+                    <div class="font-medium dark:text-white">
+                        Class 1
+                    </div>
+                    
+                </div>
+                <div class="text-gray-600 dark:text-gray-200 text-xs">
+                    23-6-2021
+                </div>
+                <button class="w-24 text-right flex justify-end"
+                
+                >
+                    <svg width="12" fill="currentColor" height="12" class="hover:text-gray-800 dark:hover:text-white dark:text-gray-200 text-gray-500" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                        </path>
+                    </svg>
+                </button>
             </div>
-          </div>
-        </div>
-      </div>
+            </button>
+        </li>
+        <li class="border-gray-400 flex flex-row mb-2">
+        <button onClick={() => {
+                  props.history.push("/detailedattendance", );
+                }}>
+
+          
+            <div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-4">
+                
+                <div class="flex-1 pl-1 md:mr-16 text-left">
+                    <div class="font-medium dark:text-white">
+                        Class 2
+                    </div>
+                    
+                </div>
+                <div class="text-gray-600 dark:text-gray-200 text-xs">
+                    23-6-2021
+                </div>
+                <button class="w-24 text-right flex justify-end"
+                
+                >
+                    <svg width="12" fill="currentColor" height="12" class="hover:text-gray-800 dark:hover:text-white dark:text-gray-200 text-gray-500" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            </button>
+        </li>
+        <li class="border-gray-400 flex flex-row mb-2">
+        <button onClick={() => {
+                  props.history.push("/detailedattendance", );
+                }}>
+
+          
+            <div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 items-center p-4">
+                
+                <div class="flex-1 pl-1 md:mr-16 text-left">
+                    <div class="font-medium dark:text-white">
+                        Class 3
+                    </div>
+                    
+                </div>
+                <div class="text-gray-600 dark:text-gray-200 text-xs">
+                    23-6-2021
+                </div>
+                <button class="w-24 text-right flex justify-end"
+                
+                >
+                    <svg width="12" fill="currentColor" height="12" class="hover:text-gray-800 dark:hover:text-white dark:text-gray-200 text-gray-500" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            </button>
+        </li>
+        
+    </ul>
+</div>
+
+      
       </div>
           </div>
         </div>

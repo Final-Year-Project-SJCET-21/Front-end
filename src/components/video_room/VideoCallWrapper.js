@@ -7,8 +7,8 @@ import axios from "axios";
 import VideoRoomComponent from './components/VideoRoomComponent';
 
 export default function VideoCallWrapper (props){
-  const room=props.history.location.state.courseName;
-  const id=props.history.location.state.courseId;
+  // const room=props.history.location.state.courseName;
+  // const id=props.history.location.state.courseId;
   const [name, setName] = React.useState(
     localStorage.getItem("username") || ""
   );
@@ -87,14 +87,14 @@ export default function VideoCallWrapper (props){
 
   return (
     <div>
-      <div className="relative  bg-hero-pattern bg-cover py-10 h-screen">
-        <div className="px-4 md:px-10 mx-auto w-full ">
+      <div className="relative  bg-gray-900 py-10 h-screen">
+        {/* <div className="px-4 md:px-10 mx-auto w-full ">
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
               <div className="flex flex-col justify-items-center justify-center align-middle items-center min-w-0 min-h-full break-words bg-white w-full mb-6 shadow-lg rounded-lg p-20">
                
 
-                <div>
+                <div> */}
                   {/* <Face 
         classRoom = {room}
         id ={id}
@@ -103,11 +103,11 @@ export default function VideoCallWrapper (props){
                     openviduServerUrl="https://video.fenstrok.com"
                     openviduSecret="justin_123"
                   />
-                </div>
+                {/* </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

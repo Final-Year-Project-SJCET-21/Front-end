@@ -70,11 +70,13 @@ export default class ToolbarComponent extends Component {
         return (
             <AppBar className="toolbar" id="header">
                 <Toolbar className="toolbar">
-                    <div className="buttonsContent">
-                        <IconButton color="inherit" className="navButton" id="navMicButton" onClick={this.micStatusChanged}>
+                    <div className="buttonsContent flex flex-row justify-items-center justify-center align-middle items-center ">
+                        <div className=" bg-gray-800 rounded-full m-2 ">
+                        <IconButton color="inherit" className="navButton " id="navMicButton" onClick={this.micStatusChanged}>
                             {localUser !== undefined && localUser.isAudioActive() ? <Mic /> : <MicOff color="secondary" />}
                         </IconButton>
-
+                        </div>
+                        <div className=" bg-gray-800 rounded-full m-2">
                         <IconButton color="inherit" className="navButton" id="navCamButton" onClick={this.camStatusChanged}>
                             {localUser !== undefined && localUser.isVideoActive() ? (
                                 <Videocam />
@@ -82,24 +84,32 @@ export default class ToolbarComponent extends Component {
                                 <VideocamOff color="secondary" />
                             )}
                         </IconButton>
+                        </div>
+                        <div className=" bg-gray-800 rounded-full m-2">
 
                         <IconButton color="inherit" className="navButton" onClick={this.screenShare}>
                             {localUser !== undefined && localUser.isScreenShareActive() ? <PictureInPicture /> : <ScreenShare />}
                         </IconButton>
-
+                        </div>
+                        <div className=" bg-gray-800 rounded-full m-2">
                         {localUser !== undefined &&
                             localUser.isScreenShareActive() && (
                                 <IconButton onClick={this.stopScreenShare} id="navScreenButton">
                                     <StopScreenShare color="secondary" />
                                 </IconButton>
                             )}
+                            </div>
+                            <div className=" bg-gray-800 rounded-full ">
 
                         <IconButton color="inherit" className="navButton" onClick={this.toggleFullscreen}>
                             {localUser !== undefined && this.state.fullscreen ? <FullscreenExit /> : <Fullscreen />}
                         </IconButton>
-                        <IconButton color="secondary" className="navButton" onClick={this.leaveSession} id="navLeaveButton">
+                        </div>
+                        <div className=" bg-red-700 rounded-full m-2">
+                        <IconButton color="inherit" className="navButton" onClick={this.leaveSession} id="navLeaveButton">
                             <PowerSettingsNew />
                         </IconButton>
+                        </div>
                     </div>
                 </Toolbar>
             </AppBar>

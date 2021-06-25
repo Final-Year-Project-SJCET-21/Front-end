@@ -1,12 +1,14 @@
 #header {
-    color: #ffffff;
-    height: 40px;
-    background-color: #333333;
+ 
+    color: #fff;
+    height: 80px;
+    
     padding: 0 14px 0 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999999;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    
+    
     min-width: 400px !important;
   }
   .toolbar{
@@ -27,6 +29,7 @@
     left: 0;
     right: 0;
     min-width: 400px;
+    background-color: #000;
   }
   #navChatButton {
     position: absolute;

@@ -45,19 +45,30 @@
 
 
 .bounds {
-  background-color: yellow;
+ 
   overflow: hidden;
   position: absolute;
   left: 0;
   right: 0;
-  top: 40px;
+  top: 120px;
   bottom: 0;
   height: 500px;
   min-width: 400px !important;
-  width: 400px;
+  width:70%;
+  
 }
 
-
+.sidebar{
+  overflow: hidden;
+  position: absolute;
+  
+  left: 70%;
+  top: 80px;
+  bottom: 0;
+  height: 100%;
+  min-width: 100px !important;
+  width:30%;
+}
 /*!
  * Copyright (c) 2017 TokBox, Inc.
  * Released under the MIT license
