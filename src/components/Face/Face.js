@@ -17,7 +17,7 @@
 import React, {useState, useEffect, useRef  } from "react";
 import * as faceapi from "face-api.js";
 import { io } from "socket.io-client";
-
+import db from '../../firebaseconfig';
 
 
 export default function FaceApi(props) {
@@ -43,12 +43,48 @@ export default function FaceApi(props) {
   const canvaRef = useRef();
   const room = props.classRoom;
   const id = props.id;
+  const classId = props.classid;
+  const [data, setData] = useState();
+
+  
   var state;
   // const socket = io("ws://localhost:8080");
-  const socket = io("https://raptorlogin.santhoshthomas.xyz/student_active");
+  // const socket = io("https://raptorlogin.santhoshthomas.xyz/student_active");
+  const studentRef = db.collection("students");
+
+  function getData() {
+    // console.log(courseName.room_name);
+    
+
+    
+      studentRef.where("classid","==",classId).where("userid","==",userId).onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+        console.log(doc.id);
+        setData(doc.id);
+        
+      });
+      // setData(items);
+      // setLoading(false);
+    });
+  
+  }
+
+  function edit(updatedData) {
+    
+    studentRef
+      .doc(updatedData.id)
+      .update(updatedData)
+      .catch((err) => {
+        console.error(err);
+      });
+  }
   
   useEffect(()=>{
-    console.log(props.classRoom)
+    console.log(classId)
+    getData()
+    console.log(data)
     const loadModels =async ()=>{
       const MODEl_URL = process.env.PUBLIC_URL + '/models';
       setInitializing(true);
@@ -92,7 +128,7 @@ export default function FaceApi(props) {
     // });
   },[]
   )
-
+ 
   const startVideo=()=>{
     
     navigator.getUserMedia({
@@ -123,24 +159,25 @@ export default function FaceApi(props) {
         state = false;
       }
 
-      console.log(userId);
+      // console.log(userId);
       console.log(state);
+      edit({id:data, isactive: state})
       // socket.emit("message", state); 
       // socket.emit("message", active);
   // setInterval(() => {
   //   socket.emit("message", state);
     
   // }, 0); 
-  socket.emit("connect-4", {classId: "93bfb45099d842c89d8c8222a6cb9c70", studentId:2, studentName: username, isActive : state, courseId:15});
-    socket.on("connect-5", (data) => {
-      console.log(data.class);
-    });
-    // socket.on("connect-5", (data) => {
-    //   console.log(data);
-    // });
-    socket.on("class", (data) => {
-      console.log(data);
-    });
+  // socket.emit("connect-4", {classId: "93bfb45099d842c89d8c8222a6cb9c70", studentId:2, studentName: username, isActive : state, courseId:15});
+  //   socket.on("connect-5", (data) => {
+  //     console.log(data.class);
+  //   });
+  //   // socket.on("connect-5", (data) => {
+  //   //   console.log(data);
+  //   // });
+  //   socket.on("class", (data) => {
+  //     console.log(data);
+  //   });
       
       // console.log(active);
     },1000)
@@ -169,14 +206,14 @@ export default function FaceApi(props) {
       <h1>{start}</h1> */}
 
 
-{userDatas?(
+{/* {userDatas?(
         userDatas.map((userData)=>(
           <div>
             <p>{userData.username} is {userData.msg}</p>
           
           </div>
         ))
-      ):(<div></div>)}
+      ):(<div></div>)} */}
       
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 import { BrowserRouter, Switch, Route, Redirect, Link } from "react-router-dom";
 
@@ -10,26 +11,64 @@ import FooterAdmin from "../../components/Footers/FooterAdmin.js";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import ModuleCard from "../../components/Cards/ModuleCard";
 import AvatarStack from "../../components/AvatarStack/AvatarStack";
+import db from '../../firebaseconfig';
 
 // views
 
 import Dashboard from "./Dashboard.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function CourseDetails(props) {
   let history = useHistory();
   const [isSucess, setisSucess] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [courseName, setCourseName] = useState([]);
+  const [isCourseActive, setIsCourseActive] = useState(false);
+  const [courseData, setCourseData] = useState([]);
   const [modules, setModules] = useState([]);
+  const [data, setData] = useState([]);
+ 
+  const [activeId, setActiveId] = useState("");
   const id = props.history.location.state.roomid;
   const [token, setToken] = React.useState(localStorage.getItem("key") || "");
   const [role, setroleData] = React.useState(
     localStorage.getItem("role") || ""
   );
-  console.log(id);
+  const ref = db.collection("courseActive");
+  // console.log(id);
 
-  if (isLoaded == false) {
+
+  //REALTIME GET FUNCTION
+  function getData() {
+    // console.log(courseName.room_name);
+    if(courseData.room_name){
+
+    
+    ref.where("coursename","==",courseData.room_name).where("isactive","==","true").onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setData(items);
+      
+      // setLoading(false);
+    });
+  }
+  }
+
+  useEffect(()=>{
+
+  if(isLoaded===true){
+    getData();
+  }
+  data && data.map(data=>{
+    if(data.isactive==="true"){
+      // console.log("Machine learning is active");
+      setActiveId(data.id);
+      setIsCourseActive(true);
+    }
+  })
+
+  if (isLoaded === false) {
     axios
       .all([
         axios.get(`https://project-api.fenstrok.com/api/clasroom/${id}`),
@@ -42,7 +81,7 @@ export default function CourseDetails(props) {
           // do something with both responses
           console.log("Well done!");
           setIsLoaded(true);
-          setCourseName(classroomRes.data);
+          setCourseData(classroomRes.data);
           setModules(moduleRes.data);
         })
       )
@@ -51,7 +90,7 @@ export default function CourseDetails(props) {
         console.log("An error occurred:", error);
       });
   }
-
+  })
   // if (isLoaded == false) {
   //   axios
   //     .get(
@@ -131,16 +170,26 @@ export default function CourseDetails(props) {
               <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
                 <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
                 
-                  {role == "T" ? (
+                  {role === "T" ? (
 
                     <div className="flex flex-row float-right ">
+                      {isCourseActive?(
                       <button
                         className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
                         type="button"
                         onClick={() => {
-                          props.history.push("/videocall",{ courseName:courseName.room_name, courseId:courseName.id,  } );
+                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
                         }}
-                      > Start video call</button>
+                      > Join Video Call</button>
+                      ):(
+                        <button
+                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        type="button"
+                        onClick={() => {
+                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
+                        }}
+                      > Start Video Call</button>
+                      )}
                       <button
                         className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
                         type="button"
@@ -168,7 +217,17 @@ export default function CourseDetails(props) {
                     </button>
                     </div>
                   ) : (
-                    <div></div>
+                    <div>
+                      {isCourseActive?(
+                        <button
+                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        type="button"
+                        onClick={() => {
+                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
+                        }}
+                      > Join Video Call</button>
+                      ):(<div></div>)}
+                    </div>
                   )}
                   
                 </div>
@@ -177,7 +236,7 @@ export default function CourseDetails(props) {
                   <div className="bg-white p-4 rounded w-full">
                     <div className=" max-w-2xl mt-4 mx-auto">
                       <AvatarStack
-                        courseName={courseName.room_name}
+                        courseName={courseData.room_name}
                         roomId={id}
                         history={props.history}
                       />
