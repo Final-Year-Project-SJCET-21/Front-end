@@ -9,6 +9,7 @@ import ChatComponent from './chat/ChatComponent';
 import OpenViduLayout from '../layout/openvidu-layout';
 import UserModel from '../models/user-model';
 import ToolbarComponent from './toolbar/ToolbarComponent';
+import Sidebar from './sidebar';
 
 var localUser = new UserModel();
 
@@ -25,6 +26,7 @@ class VideoRoomComponent extends Component {
         let userName = this.props.user ? this.props.user : 'OpenVidu_User' + Math.floor(Math.random() * 100);
         this.remotes = [];
         this.localUserAccessAllowed = false;
+        let activeClassId = this.props.activeClassId;
         this.state = {
             mySessionId: sessionName,
             myUserName: userName,
@@ -455,6 +457,7 @@ class VideoRoomComponent extends Component {
         const mySessionId = this.state.mySessionId;
         const localUser = this.state.localUser;
         var chatDisplay = { display: this.state.chatDisplay };
+        
 
         return (
             <div className="container bg-black " id="container">
@@ -489,7 +492,10 @@ class VideoRoomComponent extends Component {
                 />
 
                 <div className="sidebar bg-blue-gray-900">
-                    kjbnkjnkjn
+                    
+                    <Sidebar
+                     activeClassId= {this.props.activeClassId}
+                    />
                 </div>
             </div>
         );

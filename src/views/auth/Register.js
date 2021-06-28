@@ -27,6 +27,7 @@ export default function Register(props) {
     url+="teacher";
   }
   const handleSignup = (evt) => {
+    console.log('Well done!');
     evt.preventDefault();
     // alert(`Submitting Name ${username} ${email} ${password}`)
     axios
@@ -41,7 +42,7 @@ export default function Register(props) {
       // Handle success.
       console.log('Well done!');
       // console.log('User profile', response.data.user);
-      // console.log('User token', response.data.jwt);
+      console.log('User token', response.data.key);
       setToken(response.data.key);
       setisSucess(true);
       localStorage.setItem("key", response.data.key);
@@ -215,7 +216,7 @@ if(isSucess){
 
 
                   <div className="text-center mt-6">
-                    <Link to='/admin'>
+                  
                     <button
                       className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="submit"
@@ -223,7 +224,7 @@ if(isSucess){
                     >
                       Create Account
                     </button>
-                    </Link>
+                   
                   </div>
                 </form>
               </div>

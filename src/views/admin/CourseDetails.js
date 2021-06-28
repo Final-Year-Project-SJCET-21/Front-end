@@ -11,7 +11,7 @@ import FooterAdmin from "../../components/Footers/FooterAdmin.js";
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 import ModuleCard from "../../components/Cards/ModuleCard";
 import AvatarStack from "../../components/AvatarStack/AvatarStack";
-import db from '../../firebaseconfig';
+import db from "../../firebaseconfig";
 
 // views
 
@@ -26,7 +26,7 @@ export default function CourseDetails(props) {
   const [courseData, setCourseData] = useState([]);
   const [modules, setModules] = useState([]);
   const [data, setData] = useState([]);
- 
+
   const [activeId, setActiveId] = useState("");
   const id = props.history.location.state.roomid;
   const [token, setToken] = React.useState(localStorage.getItem("key") || "");
@@ -36,61 +36,61 @@ export default function CourseDetails(props) {
   const ref = db.collection("courseActive");
   // console.log(id);
 
-
   //REALTIME GET FUNCTION
   function getData() {
     // console.log(courseName.room_name);
-    if(courseData.room_name){
+    if (courseData.room_name) {
+      ref
+        .where("coursename", "==", courseData.room_name)
+        .where("isactive", "==", "true")
+        .onSnapshot((querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            items.push(doc.data());
+          });
+          setData(items);
 
-    
-    ref.where("coursename","==",courseData.room_name).where("isactive","==","true").onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setData(items);
-      
-      // setLoading(false);
-    });
-  }
-  }
-
-  useEffect(()=>{
-
-  if(isLoaded===true){
-    getData();
-  }
-  data && data.map(data=>{
-    if(data.isactive==="true"){
-      // console.log("Machine learning is active");
-      setActiveId(data.id);
-      setIsCourseActive(true);
+          // setLoading(false);
+        });
     }
-  })
-
-  if (isLoaded === false) {
-    axios
-      .all([
-        axios.get(`https://project-api.fenstrok.com/api/clasroom/${id}`),
-        axios.get(
-          `https://project-api.fenstrok.com/api/clasroom/${id}/modules/`
-        ),
-      ])
-      .then(
-        axios.spread((classroomRes, moduleRes) => {
-          // do something with both responses
-          console.log("Well done!");
-          setIsLoaded(true);
-          setCourseData(classroomRes.data);
-          setModules(moduleRes.data);
-        })
-      )
-      .catch((error) => {
-        // Handle error.
-        console.log("An error occurred:", error);
-      });
   }
-  })
+
+  useEffect(() => {
+    if (isLoaded === true) {
+      getData();
+    }
+    data &&
+      data.map((data) => {
+        if (data.isactive === "true") {
+          // console.log("Machine learning is active");
+          setActiveId(data.id);
+          setIsCourseActive(true);
+        }
+      });
+
+    if (isLoaded === false) {
+      axios
+        .all([
+          axios.get(`https://project-api.fenstrok.com/api/clasroom/${id}`),
+          axios.get(
+            `https://project-api.fenstrok.com/api/clasroom/${id}/modules/`
+          ),
+        ])
+        .then(
+          axios.spread((classroomRes, moduleRes) => {
+            // do something with both responses
+            console.log("Well done!");
+            setIsLoaded(true);
+            setCourseData(classroomRes.data);
+            setModules(moduleRes.data);
+          })
+        )
+        .catch((error) => {
+          // Handle error.
+          console.log("An error occurred:", error);
+        });
+    }
+  });
   // if (isLoaded == false) {
   //   axios
   //     .get(
@@ -137,7 +137,7 @@ export default function CourseDetails(props) {
     axios
       .delete(
         `https://project-api.fenstrok.com/api/clasroom/${id}/`,
-        
+
         {
           headers: {
             Authorization: `Token ${token}`,
@@ -169,31 +169,47 @@ export default function CourseDetails(props) {
             <div className="w-full  px-4">
               <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
                 <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
-                
                   {role === "T" ? (
-
                     <div className="flex flex-row float-right ">
-                      {isCourseActive?(
-                      <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
-                        type="button"
-                        onClick={() => {
-                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
-                        }}
-                      > Join Video Call</button>
-                      ):(
+                      {isCourseActive ? (
                         <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
-                        type="button"
-                        onClick={() => {
-                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
-                        }}
-                      > Start Video Call</button>
+                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          type="button"
+                          onClick={() => {
+                            props.history.push("/videocall", {
+                              courseName: courseData.room_name,
+                              courseId: courseData.id,
+                              activeId: activeId,
+                            });
+                          }}
+                        >
+                          {" "}
+                          Join Video Call
+                        </button>
+                      ) : (
+                        <button
+                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          type="button"
+                          onClick={() => {
+                            props.history.push("/videocall", {
+                              courseName: courseData.room_name,
+                              courseId: courseData.id,
+                              activeId: activeId,
+                            });
+                          }}
+                        >
+                          {" "}
+                          Start Video Call
+                        </button>
                       )}
                       <button
                         className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
                         type="button"
-                        onClick={()=>{props.history.push("/attendance", { token: props.token });}}
+                        onClick={() => {
+                          props.history.push("/attendance", {
+                            token: props.token,
+                          });
+                        }}
                       >
                         <h1 className="">View Attendance</h1>
                       </button>
@@ -209,27 +225,35 @@ export default function CourseDetails(props) {
                         </div>
                       </button>
                       <button
-                      className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
-                      type="button"
-                      onClick={handleDelete}
-                    >
-                      Delete
-                    </button>
+                        className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
+                        type="button"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </button>
                     </div>
                   ) : (
                     <div>
-                      {isCourseActive?(
+                      {isCourseActive ? (
                         <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
-                        type="button"
-                        onClick={() => {
-                          props.history.push("/videocall",{ courseName:courseData.room_name, courseId:courseData.id, activeId: activeId } );
-                        }}
-                      > Join Video Call</button>
-                      ):(<div></div>)}
+                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          type="button"
+                          onClick={() => {
+                            props.history.push("/videocall", {
+                              courseName: courseData.room_name,
+                              courseId: courseData.id,
+                              activeId: activeId,
+                            });
+                          }}
+                        >
+                          {" "}
+                          Join Video Call
+                        </button>
+                      ) : (
+                        <div></div>
+                      )}
                     </div>
                   )}
-                  
                 </div>
 
                 <div className=" flex items-center justify-center ">
@@ -240,7 +264,6 @@ export default function CourseDetails(props) {
                         roomId={id}
                         history={props.history}
                       />
-                      
                     </div>
                   </div>
                 </div>
@@ -253,7 +276,6 @@ export default function CourseDetails(props) {
                     id={id}
                     moduleId={module.id}
                     moduleName={module.module_name}
-                    
                   />
                 ))}
               </div>

@@ -11,6 +11,7 @@ export default function VideoCallWrapper (props){
   const room=props.history.location.state.courseName;
   const activeClassId=props.history.location.state.activeId;
   const id=props.history.location.state.courseId;
+  const [exist, setExist] = useState(true);
   const [name, setName] = React.useState(
     localStorage.getItem("username") || ""
   );
@@ -20,9 +21,7 @@ export default function VideoCallWrapper (props){
   const [userId, setUserId] = React.useState(
     localStorage.getItem("userid") || ""
   );
-  const [call, setCall] = useState(false)
   
-  const [password, setPassword] = useState('')
   const classId= uuidv4();
   var studentId = uuidv4();
   // const [classId, setroleclassId] = React.useState(
@@ -56,86 +55,41 @@ export default function VideoCallWrapper (props){
   function studentExist() {
     
     
-    const snapshot = studentRef
-   .where("classid","==",activeClassId).where("userid","==",userId)
-   .get();
-    if (snapshot.empty) { return false}
-    else {return true}
-    
+    const test = studentRef.where("classid","==",activeClassId).where("userid","==",userId).get().then((item) => {
+    let items = item.docs.map((doc) => doc.data());
+      
+      
+      
+      return items;
+    });
+    return test;
   }
 
-  function edit(updatedData) {
-    
-    ref
-      .doc(updatedData.id)
-      .update(updatedData)
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+  
   
   useEffect(()=>{
     
-    console.log(studentExist());
+    // console.log(activeClassId);
+    // console.log(userId);
+    // studentExist();
+    
     if(role==="T"&&!activeClassId){
       
       addClass({coursename: room, id:classId, isactive: "true"})
-      // axios
-      // .post("https://raptorlogin.santhoshthomas.xyz/login/add_class", {
-       
-      //   courseId: id,
-      // })
-      // .then((response) => {
-      //   // Handle success.
-        
-        
-      //   // setClassId(response.data.classId);
-      //   console.log(classId);
-      //   localStorage.setItem("classId", response.data.classId);
-        
-      // })
-      // .catch((error) => {
-      //   // Handle error.
-      //   console.log("An error occurred:", error.response);
-      //   alert("Error");
-      // });
-    }
-    if(role==="S"&&!studentExist()){
       
-      addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId})
-      // axios
-      // .post("https://raptorlogin.santhoshthomas.xyz/login/add_student", {
-       
-      //   classId: "93bfb45099d842c89d8c8222a6cb9c70",
-      //   courseId: 15,
-      //   studentId: 2,
-      //   studentName: "name",
-
-      // })
-      // .then((response) => {
-      //   // Handle success.
-        
-        
-      //   // setClassId(response.data.classId);
-      //   console.log(response.data);
-      //   // localStorage.setItem("classId", response.data.classId);
-        
-      // })
-      // .catch((error) => {
-      //   // Handle error.
-      //   console.log("An error occurred:", error.response);
-      //   alert("Error");
-      // });
+    }
+    if(role==="S"){
+      studentExist().then((data)=>{ 
+        if(data == null || data.length === 0) 
+        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId})
+     
+      });
+      
+      
     }
   })
 
-  // })
-
-  // const handleClick = event => {
-  //   event.preventDefault()
-  //   if (room && name) setCall(true)
-  // }
-// console.log(studentId)
+  
   return (
     <div>
       <div className="relative  bg-gray-900 py-10 h-screen">
@@ -146,17 +100,13 @@ export default function VideoCallWrapper (props){
                
 
                 <div> */}
-                  <Face 
-        classRoom = {room}
-        id ={id}
-        classid= {activeClassId}
-        
+        <Face classRoom={room} id={id} classid={activeClassId} />
+        <VideoRoomComponent
+          openviduServerUrl="https://video.fenstrok.com"
+          openviduSecret="justin_123"
+          activeClassId={activeClassId}
         />
-                  {/* <VideoRoomComponent
-                    openviduServerUrl="https://video.fenstrok.com"
-                    openviduSecret="justin_123"
-                  /> */}
-                {/* </div>
+        {/* </div>
               </div>
             </div>
           </div>
