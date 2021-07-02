@@ -167,13 +167,13 @@ export default function CourseDetails(props) {
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
-              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg pb-20">
-                <div className=" flex flex-col flex-wrap  float-right pt-5 px-5">
+              <div className="relative -mt-10 flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 border border-gray-200 rounded-lg pb-20">
+                <div className=" flex flex-col flex-wrap  justify-items-center align-middle items-center pt-10 px-5">
                   {role === "T" ? (
                     <div className="flex flex-row float-right ">
                       {isCourseActive ? (
                         <button
-                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          className=" max-auto   bg-indigo-500 text-white active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
                           type="button"
                           onClick={() => {
                             props.history.push("/videocall", {
@@ -225,7 +225,7 @@ export default function CourseDetails(props) {
                         </div>
                       </button>
                       <button
-                        className="border border-red-700 text-red-700 active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white"
+                        className=" bg-red-700 text-white active:bg-blueGray-600 text-sm font-bold  px-3  rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-red-700 hover:text-white "
                         type="button"
                         onClick={handleDelete}
                       >

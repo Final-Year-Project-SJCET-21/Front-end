@@ -436,7 +436,8 @@ module.exports = {
         
        }),
       fontFamily: {
-        sans: ['Helvetica Neue', ...defaultTheme.fontFamily.sans],
+        sans: ['poppins', ...defaultTheme.fontFamily.sans],
+        'poppins': ['poppins', 'sans-serif'],
       },
       
       colors: {

@@ -137,11 +137,13 @@ export default function Folder(props) {
         <div className="px-10 md:px-10 mx-auto w-full -m-24 mb-6">
           <div className="flex flex-wrap"></div>
           <div className="w-full  px-4">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full min-h-screen mb-10 shadow-lg rounded">
+            <div className="relative -mt-10 flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 border border-gray-200 rounded-lg pb-20">
               <div className=" flex items-center justify-center ">
                 <div className="bg-white p-4 rounded w-full">
-                  <div className=" float-right mt-1 mx-auto">
-                  {role=="T"?(
+                <div className=" flex flex-row justify-between flex-wrap items-center  pt-0 px-2">
+            <h1 className="text-sm font-semibold  p-6 text-gray-700">Learning Materials</h1>
+              <div className=" float-right ">
+              {role==="T"?(
                     <Popup 
                     trigger={<button className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"> 
                     <div className="flex flex-row justify-items-center justify-center items-center">
@@ -256,8 +258,9 @@ export default function Folder(props) {
 
                   ):(<div></div>)
                   }
-                    
-                  </div>
+              </div>
+            </div>
+                  
                 </div>
               </div>
               {isEmpty(items)?(<NoResult/>):(

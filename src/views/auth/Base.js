@@ -11,10 +11,10 @@ class AuthBase extends React.Component {
     return (
       <div className="flex flex-warp bg-hero-pattern bg-cover  h-screen content-center">
         <div className="grid gap-5 row-gap-8 lg:grid-cols-2">
-          <div className="flex flex-col justify-center ">
+          <div className="flex flex-col justify-center pt-20">
             <div className=" mx-auto mb-6 ">
-              <img class="w-2/3 mx-auto content-center" src={Logo} alt="Logo" />
-              <p className="text-base text-center text-white md:text-lg">
+              <img class="w-2/3 mx-auto content-center px-10" src={Logo} alt="Logo" />
+              <p className="text-base text-center pt-5 md:text-lg">
                 A Digital School To make Learning Digital
               </p>
             </div>

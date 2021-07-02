@@ -88,7 +88,7 @@ export default function CheckTeacherOrStudent(props) {
         <div className="px-10 md:px-10 mx-auto w-full -m-24 mb-6">
           <div className="flex flex-wrap"></div>
           <div className="w-full  px-4">
-            <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded">
+            <div className="relative -mt-10 flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 border border-gray-200 rounded-lg pb-20">
               <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
               {role=="T"?(
           <AddCourseForm
@@ -105,10 +105,10 @@ export default function CheckTeacherOrStudent(props) {
               <div className="flex flex-wrap mx-auto">
                 {items.map((item) => (
                   
-                  <div className="focus:outline-none m-6 "
+                  <div className="focus:outline-none m-4 my-6 "
                   
                   >
-                    <div className="bg-white">
+                    <div className="">
                     
                 
                     <CourseCard

@@ -20,17 +20,17 @@ export default function HeaderStats(props) {
     return (
       <>
       {/* Header */}
-      <div className="relative  bg-hero-pattern bg-cover md:pt-32 pb-32 pt-12">
+      <div className=" bg-hero-pattern bg-cover md:pt-32 pb-52 pt-20 ">
         <div className="px-4 md:px-10 mx-auto w-full">
           
           <div >
           <div className="w-full lg:w-6/12  px-4">
           <div className="flex flex-row items-center">
-          <h1 className="text-white font-bold text-3xl">Hey, {username} </h1>
+          <h1 className="  font-bold text-4xl">Hey, {username} </h1>
           
-          <img className="h-10 pl-3" src={hand}/>
+          <img className="h-11 pl-3" src={hand}/>
           </div>
-          <p className="text-white ">Welcome to your learning dashboard</p>
+          <p className=" ">Welcome to your learning dashboard</p>
           </div>
           
           

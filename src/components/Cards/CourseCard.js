@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-
+import Avatar from "../AvatarStack/Avatar"
 
 export default function CourseCard({
   history,
@@ -56,16 +56,21 @@ export default function CourseCard({
 
   return (
     <>
-      <div class="">  
+      <div class="rounded-xl">  
     
-    <div class="max-w-xs w-60 rounded bg-white border border-gray-100">
-      <img class="w-full" src={coursecover} alt="Mountain"/>
-      <div class="px-6 py-4 text-center">
-        <div class="font-bold text-sm mb-2">{statTitle}</div>
-        <p class="text-gray-700 text-sm">
-          {id}
+    <div class="max-w-xs w-64 rounded-lg bg-white border border-gray-100">
+      <img class="w-full rounded-lg " src={coursecover} alt="Mountain"/>
+      <div class="px-3 py-4 text-left">
+        <div class="font-bold font-nunito text-lg mb-2">{statTitle}</div>
+        
+        <p class="text-gray-900 text-sm">
+          
           {statSubtitle}
         </p>
+        <p class="text-gray-700 text-xs">
+          Tutor
+        </p>
+        <Avatar/>
         <br/>
         <div className="flex flex-row">
         

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Avatar from "./Avatar"
 import axios from "axios";
 
 /* This example requires Tailwind CSS v2.0+ */
@@ -43,7 +43,7 @@ export default function AvatarStack(props) {
         </div>
         <button
              onClick={()=>{props.history.push("/enrolledstudents", { roomid: props.roomId });}}
-          className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
+          className="w-full block p-3 text-l font-semibold bg-indigo-50 text-indigo-500 hover:bg-indigo-100 cursor-pointer"
         >
           View all
         </button>

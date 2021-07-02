@@ -58,7 +58,7 @@ export default function EnrolledStudents(props) {
           <div className="flex flex-wrap">
             <div className="w-full  px-4">
             
-              <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded-lg">
+              <div className="relative -mt-10 flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 border border-gray-200 rounded-lg pb-20">
                   <h1 className="text-sm font-semibold  p-6 text-gray-700">Enrolled Students</h1>
                   <div class="mt-0 ">
               {items.map((item) => (

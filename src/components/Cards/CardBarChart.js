@@ -14,8 +14,8 @@ export default function CardBarChart(props) {
     <>
         
         
-        <div className="relative flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 shadow-lg rounded">
-          <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
+        <div className=" -mt-24">
+          <div className="rounded-t mb-0  py-3 bg-transparent">
           
             <div className=" flex flex-row justify-between flex-wrap items-center  pt-0 px-2">
             <h1 className="text-sm font-semibold  p-6 text-gray-700">My Courses</h1>

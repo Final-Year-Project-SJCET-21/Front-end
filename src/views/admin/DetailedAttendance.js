@@ -12,9 +12,54 @@ const people = [
       startingTime: '10:30',
       endingTime: '11:30',
       totalTime: '45 mins/45 mins',
-      email: 'jane.cooper@example.com',
+      email: 'jane.cooper@gmail.com',
       image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+    },
+    {
+      name: 'Lois Lane',
+      startingTime: '10:30',
+      endingTime: '11:30',
+      totalTime: '42 mins/45 mins',
+      email: 'LoisLane@gmail.com',
+      image:
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+    },
+    {
+      name: 'Donald Canard ',
+      startingTime: '10:30',
+      endingTime: '11:30',
+      totalTime: '40 mins/45 mins',
+      email: 'DonaldCanard99@gmail.com',
+      image:
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+    },
+    {
+      name: 'Ann Chovey',
+      startingTime: '10:30',
+      endingTime: '11:30',
+      totalTime: '40 mins/45 mins',
+      email: 'Annchovey@gmail.com',
+      image:
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+    },
+    {
+      name: 'Henry Higgins',
+      startingTime: '10:30',
+      endingTime: '11:30',
+      totalTime: '40 mins/45 mins',
+      email: 'Henryhiggins9@gmail.com',
+      image:
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+    },
+    {
+      name: 'Henry Higgins',
+      startingTime: '10:30',
+      endingTime: '11:30',
+      totalTime: '40 mins/45 mins',
+      email: 'Henryhiggins9@gmail.com',
+      image:
+        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
     },
     // More people...
   ]
@@ -28,13 +73,13 @@ const people = [
           <div className="px-10 md:px-10 mx-auto w-full -m-24 mb-6">
             <div className="flex flex-wrap"></div>
             <div className="w-full  px-4">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-10 shadow-lg rounded">
+              <div className="relative -mt-10 flex flex-col min-w-0 min-h-screen break-words bg-white w-full mb-6 border border-gray-200 rounded-lg pb-20">
                 <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
                   
                 <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div className="overflow-hidden  sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
@@ -101,11 +146,7 @@ const people = [
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.totalTime}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit
-                        </a>
-                      </td>
+                      
                     </tr>
                   ))}
                 </tbody>

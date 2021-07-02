@@ -19,7 +19,7 @@ export default function Dashboard(props) {
         
         
         <div className="flex flex-wrap">
-          <div className="w-full  px-4">
+          <div className="w-full ">
             <CardBarChart token={props.token} history={props.history} />
             
           </div>

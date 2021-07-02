@@ -116,18 +116,18 @@ export default function FaceApi(props) {
       // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
       // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
       if (detections.length > 0) {
-        setActive("Active");
+        
         state = true;
         minutes = minutes + 1;
       } else {
-        setActive("Not Active");
+        
         state = false;
       }
 
       // console.log(userId);
       console.log(state);
       edit({ id: data, isactive: state });
-    }, 500);
+    }, 100);
   };
 
   return (
@@ -137,8 +137,8 @@ export default function FaceApi(props) {
         ref={videoRef}
         autoPlay
         muted
-        height={height}
-        width={width}
+        height="0"
+        width="0"
         onPlay={handleVideoPlay}
       />
     </div>

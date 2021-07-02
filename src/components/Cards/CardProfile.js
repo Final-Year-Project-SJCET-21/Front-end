@@ -35,7 +35,7 @@ export default function CardProfile(props) {
   ];
   var i=0;
 
-  if(isLoaded==false){
+  if(isLoaded===false){
     axios
     .get("https://project-api.fenstrok.com/api/my-courses/", {
       headers: {
@@ -57,7 +57,7 @@ export default function CardProfile(props) {
 
   return (
     <>
-      <div class="px-8 pb-5">
+      <div class="px-2 pb-5">
       
               <div className="flex flex-wrap mx-auto">
                 {items.map((item) => (
@@ -65,7 +65,7 @@ export default function CardProfile(props) {
                   <div className="focus:outline-none m-6 "
                   
                   >
-                    <div className="bg-white">
+                    <div className="">
                     <button
                     className="hover:shadow-md focus:outline-none"
                     onClick={()=>{props.history.push("/coursedetails", { roomid: item.id, })}}

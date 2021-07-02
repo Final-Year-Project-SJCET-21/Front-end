@@ -38,7 +38,7 @@ export default function ModuleCard({
                     <div className=" max-w-2xl mt-4 mx-auto">
                       <div className=" border rounded-lg">
                         <div className="flex items-center space-x-4 p-4">
-                          <div className="flex items-center p-4 bg-purple-600 text-white rounded-lg">
+                          <div className="flex items-center p-4 bg-indigo-500 text-white rounded-lg">
                             {/* <svg
                               xmlns="http://www.w3.org/2000/svg"
                               className="fill-current w-7 h-7"
@@ -61,7 +61,7 @@ export default function ModuleCard({
                             
                           </div>
                           <div className="flex-1">
-                            <p className="text-gray-500 font-semibold text-sm">
+                            <p className="text-gray-500  text-sm">
                               {description}
                             </p>
                             <div className="flex items-baseline space-x-4">
@@ -74,11 +74,11 @@ export default function ModuleCard({
                         
                         {url!=""?(<a 
                         href={url}
-                        className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
-                        >download</a>):
+                        className="w-full block p-3 text-l font-semibold bg-indigo-50 text-text-indigo-500 hover:bg-indigo-100 cursor-pointer"
+                        >Download</a>):
                         <button
                         onClick={()=>{history.push("/folder", { roomid: id, moduleId: moduleId,   });}}
-                       className="w-full block p-3 text-l font-semibold bg-purple-50 text-purple-800 hover:bg-purple-100 cursor-pointer"
+                       className="w-full block p-3 text-l font-semibold bg-indigo-50 text-indigo-500 hover:bg-indigo-100 cursor-pointer"
                      >
                        View
                      </button>
