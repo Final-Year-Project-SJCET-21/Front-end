@@ -173,7 +173,7 @@ export default function CourseDetails(props) {
                     <div className="flex flex-row float-right ">
                       {isCourseActive ? (
                         <button
-                          className=" max-auto   bg-indigo-500 text-white active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          className=" max-auto   bg-blue-700 text-white active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white"
                           type="button"
                           onClick={() => {
                             props.history.push("/videocall", {
@@ -188,7 +188,7 @@ export default function CourseDetails(props) {
                         </button>
                       ) : (
                         <button
-                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          className=" max-auto  border border-blue-700 text-blue-700 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white"
                           type="button"
                           onClick={() => {
                             props.history.push("/videocall", {
@@ -203,7 +203,7 @@ export default function CourseDetails(props) {
                         </button>
                       )}
                       <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        className=" max-auto  border border-blue-700 text-blue-700 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white"
                         type="button"
                         onClick={() => {
                           props.history.push("/attendance", {
@@ -214,7 +214,7 @@ export default function CourseDetails(props) {
                         <h1 className="">View Attendance</h1>
                       </button>
                       <button
-                        className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                        className=" max-auto  border border-blue-700 text-blue-700 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white"
                         type="button"
                         onClick={() => {
                           props.history.push("/addfolder", { classroomid: id });
@@ -236,7 +236,7 @@ export default function CourseDetails(props) {
                     <div>
                       {isCourseActive ? (
                         <button
-                          className=" max-auto  border border-indigo-500 text-indigo-500 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-indigo-500 hover:text-white"
+                          className=" max-auto  border border-blue-700 text-blue-700 active:bg-blueGray-600   text-sm font-semibold  px-3 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1  ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white"
                           type="button"
                           onClick={() => {
                             props.history.push("/videocall", {

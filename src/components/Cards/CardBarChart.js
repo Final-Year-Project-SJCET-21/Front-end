@@ -21,7 +21,7 @@ export default function CardBarChart(props) {
             <h1 className="text-sm font-semibold  p-6 text-gray-700">My Courses</h1>
               <div className=" float-right ">
               <button
-                      className=" max-auto border bg-indigo-500 text-black active:bg-blueGray-600   text-sm font-semibold  px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className=" max-auto border bg-blue-700 text-black active:bg-blueGray-600   text-sm font-semibold  px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                       onClick={()=>{props.history.push("/add", );}}
                     >

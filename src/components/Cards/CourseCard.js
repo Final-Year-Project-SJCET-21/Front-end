@@ -68,7 +68,7 @@ export default function CourseCard({
           {statSubtitle}
         </p>
         <p class="text-gray-700 text-xs">
-          Tutor
+          Faculty in charge
         </p>
         <Avatar/>
         <br/>
@@ -76,9 +76,9 @@ export default function CourseCard({
         
                     
                     {
-                      role=="S" && showButton ==true ?(
+                      role==="S" && showButton ===true ?(
                         <button
-                      className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold  px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-blue-700 text-white active:bg-blueGray-600 text-sm font-bold  px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                       onClick={handleEnroll}
                     >

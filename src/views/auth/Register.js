@@ -126,7 +126,7 @@ if(isSucess){
     <AuthBase>
 
                 <div className="w-full md:w-5/6 px-4">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
+            <div className="relative flex flex-col min-w-0 break-words w-full mb-6  rounded-lg bg-white border border-gray-200" >
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-blueGray-500 text-sm ">
@@ -218,7 +218,7 @@ if(isSucess){
                   <div className="text-center mt-6">
                   
                     <button
-                      className="bg-indigo-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-blue-700 text-white active:bg-blueGray-600 text-sm font-bold  px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="submit"
                       
                     >

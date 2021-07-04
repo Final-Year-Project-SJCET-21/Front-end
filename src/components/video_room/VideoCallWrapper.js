@@ -69,8 +69,8 @@ export default function VideoCallWrapper (props){
   
   useEffect(()=>{
     
-    // console.log(activeClassId);
-    // console.log(userId);
+    console.log(activeClassId);
+    console.log(userId);
     // studentExist();
     
     if(role==="T"&&!activeClassId){
