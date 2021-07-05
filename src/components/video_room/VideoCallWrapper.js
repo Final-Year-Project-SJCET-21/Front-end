@@ -8,6 +8,9 @@ import VideoRoomComponent from './components/VideoRoomComponent';
 import { v4 as uuidv4 } from "uuid";
 
 export default function VideoCallWrapper (props){
+  var today = new Date(),
+  date = today.getDate() +'-'+(today.getMonth() + 1) + '-'  +today.getFullYear();
+  var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
   const room=props.history.location.state.courseName;
   const activeClassId=props.history.location.state.activeId;
   const id=props.history.location.state.courseId;
@@ -75,13 +78,13 @@ export default function VideoCallWrapper (props){
     
     if(role==="T"&&!activeClassId){
       
-      addClass({coursename: room, id:classId, isactive: "true"})
+      addClass({coursename: room, id:classId, isactive: "true", date: date})
       
     }
     if(role==="S"){
       studentExist().then((data)=>{ 
         if(data == null || data.length === 0) 
-        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId})
+        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId, startingtime: time})
      
       });
       
@@ -100,12 +103,12 @@ export default function VideoCallWrapper (props){
                
 
                 <div> */}
-        <Face classRoom={room} id={id} classid={activeClassId} />
+        {/* <Face classRoom={room} id={id} classid={activeClassId} />
         <VideoRoomComponent
           openviduServerUrl="https://video.fenstrok.com"
           openviduSecret="justin_123"
           activeClassId={activeClassId}
-        />
+        /> */}
         {/* </div>
               </div>
             </div>

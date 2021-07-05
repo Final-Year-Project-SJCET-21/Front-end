@@ -1,70 +1,40 @@
 
 /* This example requires Tailwind CSS v2.0+ */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeaderStats from "../../components/Headers/HeaderStats.js";
-import FooterAdmin from "../../components/Footers/FooterAdmin.js";
+import db from '../../firebaseconfig';
 import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
-import AddCourseForm from "../../components/Forms/AddCourseForm";
 
-const people = [
-    {
-      name: 'Jane Cooper',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '45 mins/45 mins',
-      email: 'jane.cooper@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    {
-      name: 'Lois Lane',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '42 mins/45 mins',
-      email: 'LoisLane@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    {
-      name: 'Donald Canard ',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '40 mins/45 mins',
-      email: 'DonaldCanard99@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    {
-      name: 'Ann Chovey',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '40 mins/45 mins',
-      email: 'Annchovey@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    {
-      name: 'Henry Higgins',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '40 mins/45 mins',
-      email: 'Henryhiggins9@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    {
-      name: 'Henry Higgins',
-      startingTime: '10:30',
-      endingTime: '11:30',
-      totalTime: '40 mins/45 mins',
-      email: 'Henryhiggins9@gmail.com',
-      image:
-        'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-    },
-    // More people...
-  ]
+
+
   
-  export default function DetailedAttendance() {
+  export default function DetailedAttendance(props) {
+    const room=props.history.location.state.courseName;
+    const classId=props.history.location.state.classId;
+    const img = 'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg';
+      const [data, setData] = useState([]);
+      const ref = db.collection("students");
+    function getData() {
+      
+      ref
+      .where("classid", "==", classId)
+        .onSnapshot((querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            items.push(doc.data());
+          });
+          setData(items);
+
+          // setLoading(false);
+        });
+    
+  }
+
+  useEffect(() => {
+      getData();
+      console.log(data)
+      console.log(classId)
+  })
     return (
         <div className="relative  bg-blueGray-100">
         <AdminNavbar />
@@ -119,12 +89,12 @@ const people = [
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {people.map((person) => (
+                  {data.map((person) => (
                     <tr key={person.email}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-10 w-10">
-                            <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
+                            <img className="h-10 w-10 rounded-full" src={img} alt="" />
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{person.name}</div>
@@ -133,7 +103,7 @@ const people = [
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person.startingTime}</div>
+                        <div className="text-sm text-gray-900">{person.startingtime}</div>
                         
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -141,9 +111,12 @@ const people = [
                         
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
+                        {person.isactive?(
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
-                        </span>
+                        Active
+                        </span>):(<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-red-400">
+                        Inactive
+                        </span>)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.totalTime}</td>
                       

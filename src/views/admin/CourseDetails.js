@@ -207,7 +207,10 @@ export default function CourseDetails(props) {
                         type="button"
                         onClick={() => {
                           props.history.push("/attendance", {
-                            token: props.token,
+                            
+                            courseName: courseData.room_name,
+                            courseId: courseData.id,
+
                           });
                         }}
                       >
