@@ -103,12 +103,12 @@ export default function VideoCallWrapper (props){
                
 
                 <div> */}
-        {/* <Face classRoom={room} id={id} classid={activeClassId} />
+        <Face classRoom={room} id={id} classid={activeClassId} />
         <VideoRoomComponent
           openviduServerUrl="https://video.fenstrok.com"
           openviduSecret="justin_123"
           activeClassId={activeClassId}
-        /> */}
+        />
         {/* </div>
               </div>
             </div>

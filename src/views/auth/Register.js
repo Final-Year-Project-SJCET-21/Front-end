@@ -172,7 +172,7 @@ if(isSucess){
                       Name
                     </label>
                     <input
-                      type="email"
+                      
                       className="border border-gray-100 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Name"
                       // value="username"

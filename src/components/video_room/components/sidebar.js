@@ -70,7 +70,10 @@ export default function Sidebar (props){
   
   
   useEffect(()=>{
-    getData();
+    if(role==="T"){
+      getData();
+    }
+    // getData();
     // console.log(datas);
     // console.log(activeClassId);
     

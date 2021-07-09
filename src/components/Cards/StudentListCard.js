@@ -17,8 +17,8 @@ export default function StudentListCard(props) {
           </div>
           <div class="flex flex-col space-y-4 px-10">
             <div class="flex flex-col items-center md:items-start">
-              <h2 class="text-lg font-medium">Student Name :{props.name}</h2>
-              <p class="text-sm font-medium text-gray-400">Student Id : {props.id}</p>
+              <h2 class="text-lg font-medium">Student Name : {props.name}</h2>
+              {/* <p class="text-sm font-medium text-gray-400">Student Id : {props.id}</p> */}
             </div>
             
           </div>

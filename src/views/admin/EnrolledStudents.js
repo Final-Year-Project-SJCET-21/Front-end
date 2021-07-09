@@ -68,7 +68,7 @@ export default function EnrolledStudents(props) {
                     
                     <StudentListCard
                       
-                      id={items[i++].student}
+                      name={items[i++].student_name}
                     />
                   
                 ))}
