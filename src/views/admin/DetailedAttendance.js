@@ -83,9 +83,9 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
                     >
                       Active Time
                     </th>
-                    <th scope="col" className="relative px-6 py-3">
+                    {/* <th scope="col" className="relative px-6 py-3">
                       <span className="sr-only">Edit</span>
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -114,11 +114,11 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
                         {person.isactive?(
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Active
-                        </span>):(<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-red-400">
+                        </span>):(<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-400">
                         Inactive
                         </span>)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.totalTime}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.onlineseconds/60} minutes</td>
                       
                     </tr>
                   ))}

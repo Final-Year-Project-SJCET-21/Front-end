@@ -21,7 +21,7 @@ import db from "../../firebaseconfig";
 export default function FaceApi(props) {
   const height = 0;
   const width = 0;
-  var minutes = 0;
+  var seconds = 0;
   var choice = "false";
 
   const [initializing, setInitializing] = useState(false);
@@ -77,7 +77,7 @@ export default function FaceApi(props) {
   }
 
   useEffect(() => {
-    console.log(classId);
+    // console.log(classId);
     getData();
     console.log(data);
     const loadModels = async () => {
@@ -118,7 +118,7 @@ export default function FaceApi(props) {
       if (detections.length > 0) {
         
         state = true;
-        minutes = minutes + 1;
+        seconds = seconds + 1;
       } else {
         
         state = false;
@@ -126,12 +126,13 @@ export default function FaceApi(props) {
 
       // console.log(userId);
       console.log(state);
-      edit({ id: data, isactive: state });
-    }, 100);
+      console.log(seconds);
+      edit({ id: data, isactive: state, onlineseconds: seconds });
+    }, 1000); 
   };
 
   return (
-    <div className="App">
+    <div className=" absolute z-0">
       <span>{active}</span>
       <video
         ref={videoRef}

@@ -460,7 +460,7 @@ class VideoRoomComponent extends Component {
         
 
         return (
-            <div className="container bg-black " id="container">
+            <div className="container " id="container">
                 
 
                 <DialogExtensionComponent showDialog={this.state.showExtensionDialog} cancelClicked={this.closeDialogExtension} />

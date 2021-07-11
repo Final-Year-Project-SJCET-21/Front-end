@@ -16,7 +16,7 @@ export default function AvatarStack(props) {
             />
             <img
               class="w-12 h-12 rounded-full border-4 border-white -ml-4"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkV4IK-BKnJsoA1FAWpS6ww8eyZERNzzVEuQ&usqp=CAU"
+              src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
               alt=""
             />
             <img
@@ -26,11 +26,11 @@ export default function AvatarStack(props) {
             />
             <img
               class="w-12 h-12 rounded-full border-4 border-white -ml-4"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkV4IK-BKnJsoA1FAWpS6ww8eyZERNzzVEuQ&usqp=CAU"
+              src="https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png"
               alt=""
             />
             <span class="flex items-center justify-center font-semibold text-gray-600 w-12 h-12 rounded-full bg-gray-200 border-4 border-white -ml-4">
-              +3
+              
             </span>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Face from '../Face/Face'
 import axios from "axios";
 import db from '../../firebaseconfig';
 import VideoRoomComponent from './components/VideoRoomComponent';
+import { useHistory } from 'react-router-dom'
 import { v4 as uuidv4 } from "uuid";
 
 export default function VideoCallWrapper (props){
@@ -24,6 +25,8 @@ export default function VideoCallWrapper (props){
   const [userId, setUserId] = React.useState(
     localStorage.getItem("userid") || ""
   );
+  const [ locationKeys, setLocationKeys ] = useState([])
+const history = useHistory()
   
   const classId= uuidv4();
   var studentId = uuidv4();
@@ -76,6 +79,7 @@ export default function VideoCallWrapper (props){
     console.log(userId);
     // studentExist();
     
+
     if(role==="T"&&!activeClassId){
       
       addClass({coursename: room, id:classId, isactive: "true", date: date})
@@ -84,36 +88,50 @@ export default function VideoCallWrapper (props){
     if(role==="S"){
       studentExist().then((data)=>{ 
         if(data == null || data.length === 0) 
-        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId, startingtime: time})
+        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId, startingtime: time, onlineseconds: 0})
      
       });
       
       
     }
-  })
+    
+    return history.listen(location => {
+      if (history.action === 'PUSH') {
+        setLocationKeys([ location.key ])
+      }
+  
+      if (history.action === 'POP') {
+        if (locationKeys[1] === location.key) {
+          setLocationKeys(([ _, ...keys ]) => keys)
+  
+          // Handle forward event
+            alert("forward")
+        } else {
+          setLocationKeys((keys) => [ location.key, ...keys ])
+  
+          // Handle back event
+          alert("back")
+  
+        }
+      }
+    })
+      
+  }, [ locationKeys, ])
 
   
   return (
     <div>
       <div className="relative  bg-gray-900 py-10 h-screen">
-        {/* <div className="px-4 md:px-10 mx-auto w-full ">
-          <div className="flex flex-wrap">
-            <div className="w-full  px-4">
-              <div className="flex flex-col justify-items-center justify-center align-middle items-center min-w-0 min-h-full break-words bg-white w-full mb-6 shadow-lg rounded-lg p-20">
-               
-
-                <div> */}
-        <Face classRoom={room} id={id} classid={activeClassId} />
+        
+        {(role==="S")?(<Face classRoom={room} id={id} classid={activeClassId} />): (
+          <div></div>
+        )}
         <VideoRoomComponent
           openviduServerUrl="https://video.fenstrok.com"
           openviduSecret="justin_123"
           activeClassId={activeClassId}
         />
-        {/* </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        
       </div>
     </div>
   );
