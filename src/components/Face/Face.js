@@ -86,8 +86,8 @@ export default function FaceApi(props) {
       Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri(MODEl_URL),
         faceapi.nets.faceLandmark68Net.loadFromUri(MODEl_URL),
-        faceapi.nets.faceRecognitionNet.loadFromUri(MODEl_URL),
-        faceapi.nets.faceExpressionNet.loadFromUri(MODEl_URL),
+        // faceapi.nets.faceRecognitionNet.loadFromUri(MODEl_URL),
+        // faceapi.nets.faceExpressionNet.loadFromUri(MODEl_URL),
       ]).then(startVideo);
     };
     loadModels();
@@ -109,7 +109,6 @@ export default function FaceApi(props) {
       const detections = await faceapi
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
-        .withFaceExpressions();
       // const resizedDetections = faceapi.resizeResults(detections, displaySize)
       // canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
       // faceapi.draw.drawDetections(canvas, resizedDetections)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { Jutsu } from 'react-jutsu'
-import Face from '../Face/Face'
+import FaceApi from '../Face/Face'
 import axios from "axios";
 import db from '../../firebaseconfig';
 import VideoRoomComponent from './components/VideoRoomComponent';
@@ -123,13 +123,17 @@ const history = useHistory()
     <div>
       <div className="relative  bg-gray-900 py-10 h-screen">
         
-        {(role==="S")?(<Face classRoom={room} id={id} classid={activeClassId} />): (
+        {(role==="S")?(<FaceApi classRoom={room} id={id} classid={activeClassId} />): (
           <div></div>
         )}
         <VideoRoomComponent
           openviduServerUrl="https://video.fenstrok.com"
           openviduSecret="justin_123"
           activeClassId={activeClassId}
+          // sessionName = {classId}
+          user ={name}
+          courseId = {id}
+         
         />
         
       </div>

@@ -72,12 +72,16 @@ export default function Sidebar (props){
   useEffect(()=>{
     if(role==="T"){
       getData();
+      let interval = setInterval(() => getData(), (1000))
+    //destroy interval on unmount
+    return () => clearInterval(interval)
+      
     }
     // getData();
     // console.log(datas);
     // console.log(activeClassId);
     
-  })
+  },[])
 
 
   return (

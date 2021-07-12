@@ -16,6 +16,7 @@ var localUser = new UserModel();
 class VideoRoomComponent extends Component {
     constructor(props) {
         super(props);
+        let courseId = this.props.courseId
         this.OPENVIDU_SERVER_URL = this.props.openviduServerUrl
             ? this.props.openviduServerUrl
             : 'https://' + window.location.hostname + ':4443';
@@ -30,6 +31,7 @@ class VideoRoomComponent extends Component {
         this.state = {
             mySessionId: sessionName,
             myUserName: userName,
+            courseId : courseId,
             session: undefined,
             localUser: undefined,
             subscribers: [],
@@ -120,7 +122,9 @@ class VideoRoomComponent extends Component {
         this.state.session
             .connect(
                 token,
-                { clientData: this.state.myUserName },
+                { name: this.state.myUserName,
+                    courseId: this.state.courseId
+                 },
             )
             .then(() => {
                 this.connectWebCam();
