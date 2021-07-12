@@ -13,7 +13,8 @@ export default function VideoCallWrapper (props){
   date = today.getDate() +'-'+(today.getMonth() + 1) + '-'  +today.getFullYear();
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
   const room=props.history.location.state.courseName;
-  const activeClassId=props.history.location.state.activeId;
+  // let activeClassId=props.history.location.state.activeId;
+  const [activeClassId, setactiveClassId] = useState(props.history.location.state.activeId);
   const id=props.history.location.state.courseId;
   const [exist, setExist] = useState(true);
   const [name, setName] = React.useState(
@@ -83,7 +84,8 @@ const history = useHistory()
     if(role==="T"&&!activeClassId){
       
       addClass({coursename: room, id:classId, isactive: "true", date: date})
-      
+      setactiveClassId(classId)
+     
     }
     if(role==="S"){
       studentExist().then((data)=>{ 
@@ -133,7 +135,9 @@ const history = useHistory()
           // sessionName = {classId}
           user ={name}
           courseId = {id}
-         
+          role = {role}
+          studentId={studentId}
+          history={props.history}
         />
         
       </div>

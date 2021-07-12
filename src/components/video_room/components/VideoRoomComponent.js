@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './VideoRoomComponent.css';
+import db from "../../../firebaseconfig";
 import { OpenVidu } from 'openvidu-browser';
 import StreamComponent from './stream/StreamComponent';
 import DialogExtensionComponent from './dialog-extension/DialogExtension';
@@ -14,6 +15,7 @@ import Sidebar from './sidebar';
 var localUser = new UserModel();
 
 class VideoRoomComponent extends Component {
+    
     constructor(props) {
         super(props);
         let courseId = this.props.courseId
@@ -28,6 +30,7 @@ class VideoRoomComponent extends Component {
         this.remotes = [];
         this.localUserAccessAllowed = false;
         let activeClassId = this.props.activeClassId;
+        
         this.state = {
             mySessionId: sessionName,
             myUserName: userName,
@@ -55,6 +58,7 @@ class VideoRoomComponent extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.activeClassId);
         const openViduLayoutOptions = {
             maxRatio: 3 / 2, // The narrowest ratio that will be used (default 2x3)
             minRatio: 9 / 16, // The widest ratio that will be used (default 16x9)
@@ -196,8 +200,28 @@ class VideoRoomComponent extends Component {
             },
         );
     }
-
+    editCourse(updatedData) {
+        const studentRef = db.collection("courseActive");
+        studentRef
+          .doc(updatedData.id)
+          .update(updatedData)
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+      editStudent(updatedData) {
+        const studentRef = db.collection("students");
+        studentRef
+          .doc(updatedData.id)
+          .update(updatedData)
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     leaveSession() {
+        var today = new Date(),
+        date = today.getDate() +'-'+(today.getMonth() + 1) + '-'  +today.getFullYear();
+        var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         const mySession = this.state.session;
 
         if (mySession) {
@@ -216,6 +240,12 @@ class VideoRoomComponent extends Component {
         if (this.props.leaveSession) {
             this.props.leaveSession();
         }
+        if(this.props.role === "T"){
+            this.editCourse({ id: this.props.activeClassId, isactive: "false", endingtime: time });
+        } else if(this.props.role === "S"){
+            this.editStudent({ id: this.props.studentId, isactive: false });
+        }
+        this.props.history.goBack();
     }
     camStatusChanged() {
         localUser.setVideoActive(!localUser.isVideoActive());

@@ -52,7 +52,8 @@ import AttendaceClassCard from "../../components/Cards/AttendaceClassCard";
                 <button onClick={() => {
                     props.history.push("/detailedattendance",{
                         classId: data.id,
-                        courseName: room
+                        courseName: room,
+                        endingtime: data.endingtime
                     } );
                   }}>
                         <AttendaceClassCard

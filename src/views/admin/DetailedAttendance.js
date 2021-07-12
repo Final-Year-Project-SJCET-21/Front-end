@@ -11,9 +11,12 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
   export default function DetailedAttendance(props) {
     const room=props.history.location.state.courseName;
     const classId=props.history.location.state.classId;
+    const endingtime=props.history.location.state.endingtime;
     const img = 'https://carnbrae.com.au/wp-content/uploads/2021/05/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg';
       const [data, setData] = useState([]);
+      const [course, setCourse] = useState([]);
       const ref = db.collection("students");
+      const courseRef = db.collection("courseActive");
     function getData() {
       
       ref
@@ -27,6 +30,17 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
 
           // setLoading(false);
         });
+        courseRef
+      .where("classid", "==", classId)
+        .onSnapshot((querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            items.push(doc.data());
+          });
+          setCourse(items);
+
+          // setLoading(false);
+        });
     
   }
 
@@ -34,6 +48,7 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
       getData();
       console.log(data)
       console.log(classId)
+      console.log(endingtime)
   })
     return (
         <div className="relative  bg-blueGray-100">
@@ -107,7 +122,7 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
                         
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person.endingTime}</div>
+                        <div className="text-sm text-gray-900">{endingtime}</div>
                         
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">

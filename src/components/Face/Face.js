@@ -79,7 +79,7 @@ export default function FaceApi(props) {
   useEffect(() => {
     // console.log(classId);
     getData();
-    console.log(data);
+    // console.log(classId);
     const loadModels = async () => {
       const MODEl_URL = process.env.PUBLIC_URL + "/models";
       setInitializing(true);
