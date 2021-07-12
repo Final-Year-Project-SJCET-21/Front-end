@@ -241,7 +241,7 @@ class VideoRoomComponent extends Component {
             this.props.leaveSession();
         }
         if(this.props.role === "T"){
-            this.editCourse({ id: this.props.activeClassId, isactive: "false", endingtime: time });
+            this.editCourse({ id: this.props.activeClassId, isactive: "false", endingtime: time, endingminutes: today.getMinutes(), endingseconds:today.getSeconds(), endinghour:today.getHours() });
         } else if(this.props.role === "S"){
             this.editStudent({ id: this.props.studentId, isactive: false });
         }
@@ -526,7 +526,7 @@ class VideoRoomComponent extends Component {
                 />
 
                 <div className="sidebar bg-blue-gray-900">
-                    <p>{this.props.activeClassId}</p>
+                    
                     <Sidebar
                      activeClassId= {this.props.activeClassId}
                     />

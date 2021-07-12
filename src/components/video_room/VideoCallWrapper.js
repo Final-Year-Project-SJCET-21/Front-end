@@ -12,6 +12,9 @@ export default function VideoCallWrapper (props){
   var today = new Date(),
   date = today.getDate() +'-'+(today.getMonth() + 1) + '-'  +today.getFullYear();
   var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  var second = today.getSeconds();
+  var minute = today.getMinutes();
+  var hours = today.getHours();
   const room=props.history.location.state.courseName;
   // let activeClassId=props.history.location.state.activeId;
   const [activeClassId, setactiveClassId] = useState(props.history.location.state.activeId);
@@ -78,6 +81,7 @@ const history = useHistory()
     
     console.log(activeClassId);
     console.log(userId);
+    console.log(second);
     // studentExist();
     
 
@@ -90,7 +94,7 @@ const history = useHistory()
     if(role==="S"){
       studentExist().then((data)=>{ 
         if(data == null || data.length === 0) 
-        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId, startingtime: time, onlineseconds: 0})
+        addStudent({classid: activeClassId, coursename: room, id:studentId, name: name, isactive: false, userid: userId, startingtime: time, onlineseconds: 0, startingsecond: second, startingminute: minute, startinghour:hours})
      
       });
       

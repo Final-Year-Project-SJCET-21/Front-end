@@ -7,7 +7,7 @@ import db from '../../../firebaseconfig';
 
 export default function Sidebar (props){
     const activeClassId=props.activeClassId;
-  console.log(activeClassId);
+ 
   const [name, setName] = React.useState(
     localStorage.getItem("username") || ""
   );
@@ -55,14 +55,14 @@ export default function Sidebar (props){
   function getData() {
     
 
-    console.log(props.activeClassId);
+    // console.log(props.activeClassId);
     studentRef.where("classid","==",activeClassId).onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
       setDatas(items);
-      console.log(items);
+      // console.log(items);
       // setLoading(false);
     });
   
@@ -75,8 +75,8 @@ export default function Sidebar (props){
   
   useEffect(()=>{
     const activeClassId=props.activeClassId;
-    console.log("activeClassId");
-    console.log(activeClassId);
+    // console.log("activeClassId");
+    // console.log(activeClassId);
     if(role==="T"){
       // getData();
       let interval = setInterval(() => getData(), (1000))

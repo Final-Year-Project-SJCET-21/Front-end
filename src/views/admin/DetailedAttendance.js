@@ -43,12 +43,42 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
         });
     
   }
+  function calculateTime(startingTime){
+    
+    
+
+
+       // your input string
+    var a = endingtime.split(':'); // split it at the colons
+
+    // Hours are worth 60 minutes.
+    var endingMinutes = (+a[0]) * 60 + (+a[1]) + (+a[2]) / 60;
+
+    console.log(endingMinutes);
+
+
+    var b = startingTime.split(':'); // split it at the colons
+
+    // Hours are worth 60 minutes.
+    var startingMinutes = (+b[0]) * 60 + (+b[1]) + (+b[2])/60;
+
+    console.log(startingMinutes);
+
+    var totalTime = endingMinutes-startingMinutes;
+
+    return totalTime;
+
+  }
+
+  function claculatePercentage(activeTime, totalTime){
+    return (activeTime/totalTime)*100;
+  }
 
   useEffect(() => {
       getData();
-      console.log(data)
-      console.log(classId)
-      console.log(endingtime)
+      console.log(data);
+      console.log(classId);
+      
   })
     return (
         <div className="relative  bg-blueGray-100">
@@ -126,14 +156,14 @@ import AdminNavbar from "../../components/Navbars/AdminNavbar.js";
                         
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {person.isactive?(
+                        {claculatePercentage((person.onlineseconds/60).toFixed(2), calculateTime(person.startingtime).toFixed(2) > 75)?(
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Active
                         </span>):(<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-400">
                         Inactive
                         </span>)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.onlineseconds/60} minutes</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{(person.onlineseconds/60).toFixed(2)} minutes out of {calculateTime(person.startingtime).toFixed(2)} minutes</td>
                       
                     </tr>
                   ))}
