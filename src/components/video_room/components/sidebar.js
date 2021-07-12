@@ -7,7 +7,7 @@ import db from '../../../firebaseconfig';
 
 export default function Sidebar (props){
     const activeClassId=props.activeClassId;
-  
+  console.log(activeClassId);
   const [name, setName] = React.useState(
     localStorage.getItem("username") || ""
   );
@@ -55,23 +55,30 @@ export default function Sidebar (props){
   function getData() {
     
 
-    
+    console.log(props.activeClassId);
     studentRef.where("classid","==",activeClassId).onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
       setDatas(items);
-      
+      console.log(items);
       // setLoading(false);
     });
   
   }
-  
+  // if(role==="T"){
+  //   // getData();
+  //   setInterval(() => getData(), (10000))}
+  // console.log("activeClassId");
+  //   console.log(activeClassId);
   
   useEffect(()=>{
+    const activeClassId=props.activeClassId;
+    console.log("activeClassId");
+    console.log(activeClassId);
     if(role==="T"){
-      getData();
+      // getData();
       let interval = setInterval(() => getData(), (1000))
     //destroy interval on unmount
     return () => clearInterval(interval)
@@ -81,11 +88,19 @@ export default function Sidebar (props){
     // console.log(datas);
     // console.log(activeClassId);
     
-  },[])
+  })
 
+  // if(role==="T"){
+  //   getData();
+  //   let interval = setInterval(() => getData(), (1000))
+  // //destroy interval on unmount
+  // return () => clearInterval(interval)
+    
+  // }
 
   return (
     <div>
+      
       {datas.map((data) => (
           <div>
               <p className="text-white flex flex-row">{data.name} is {data.isactive?(<p className="text-green-500">Active</p>):<p className="text-red-700">Inactive</p>}</p>

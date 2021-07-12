@@ -96,29 +96,29 @@ const history = useHistory()
       
       
     }
-    
-    return history.listen(location => {
-      if (history.action === 'PUSH') {
-        setLocationKeys([ location.key ])
-      }
+    console.log(activeClassId); 
+    // return history.listen(location => {
+    //   if (history.action === 'PUSH') {
+    //     setLocationKeys([ location.key ])
+    //   }
   
-      if (history.action === 'POP') {
-        if (locationKeys[1] === location.key) {
-          setLocationKeys(([ _, ...keys ]) => keys)
+    //   if (history.action === 'POP') {
+    //     if (locationKeys[1] === location.key) {
+    //       setLocationKeys(([ _, ...keys ]) => keys)
   
-          // Handle forward event
-            alert("forward")
-        } else {
-          setLocationKeys((keys) => [ location.key, ...keys ])
+    //       // Handle forward event
+    //         alert("forward")
+    //     } else {
+    //       setLocationKeys((keys) => [ location.key, ...keys ])
   
-          // Handle back event
-          alert("back")
+    //       // Handle back event
+    //       alert("back")
   
-        }
-      }
-    })
-      
-  }, [ locationKeys, ])
+    //     }
+    //   }
+    // })
+     
+  }, [])
 
   
   return (

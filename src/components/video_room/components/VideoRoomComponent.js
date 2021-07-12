@@ -526,7 +526,7 @@ class VideoRoomComponent extends Component {
                 />
 
                 <div className="sidebar bg-blue-gray-900">
-                    
+                    <p>{this.props.activeClassId}</p>
                     <Sidebar
                      activeClassId= {this.props.activeClassId}
                     />
